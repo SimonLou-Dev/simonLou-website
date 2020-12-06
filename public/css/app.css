@@ -6820,6 +6820,435 @@ footer .infos p {
   border-top: 1px #383857 solid;
 }
 
+#projet_admin_menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 70px;
+}
+
+#projet_admin_menu nav {
+  background-color: #272730;
+  width: 45%;
+  border-radius: 0 45px 45px 0;
+}
+
+#projet_admin_menu ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#projet_admin_menu ul li {
+  margin: auto 0;
+  color: #fff;
+}
+
+#projet_admin_menu ul li a {
+  font-size: 20px;
+  font-family: "Lato", monospace;
+  font-weight: bold;
+  color: #fff;
+}
+
+#projet_admin_menu .name {
+  width: 55%;
+  display: flex;
+}
+
+#projet_admin_menu .name h1 {
+  margin: auto;
+  text-align: center;
+  font-family: "Montserrat", serif;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+#view_project {
+  width: 100%;
+  height: calc(100vh - 70px);
+}
+
+#view_project .view-project {
+  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  justify-content: space-around;
+}
+
+#view_project .view-project section {
+  max-width: 500px;
+}
+
+#view_project .view-project .infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#view_project .view-project .infos .project-card {
+  margin: auto;
+  max-width: 400px;
+  background-color: #f7fafc;
+  border: 2px solid #272730;
+  border-radius: 30px;
+}
+
+#view_project .view-project .infos .project-card .project-card_header {
+  width: 100%;
+  padding: 7px;
+  border-bottom: 2px solid #272730;
+}
+
+#view_project .view-project .infos .project-card .project-card_header h2 {
+  font-family: "Montserrat", monospace;
+  font-weight: 550;
+}
+
+#view_project .view-project .infos .project-card .project-card_content {
+  padding: 7px;
+}
+
+#view_project .view-project .infos .project-card .project-card_content p {
+  text-indent: 15px;
+  text-align: justify-all;
+  font-family: "Lato", monospace;
+}
+
+#view_project .view-project .infos .project-card .project-card_content h5 {
+  font-family: "Lato", serif;
+}
+
+#view_project .view-project .infos .project-card .project-card_content h5 span {
+  text-transform: capitalize;
+  -webkit-text-decoration: black underline;
+          text-decoration: black underline;
+}
+
+#view_project .view-project .maj .maj-list {
+  width: 400px;
+  border: #272730 3px solid;
+  background-color: #f7fafc;
+  border-radius: 30px 30px 0 0;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_header {
+  padding: 7px;
+  border-bottom: #272730 2px solid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_header h1 {
+  font-family: "Montserrat", monospace;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_header a {
+  font-family: "Montserrat", monospace;
+  font-weight: 600;
+  padding: 7px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #383857;
+  color: #fff;
+  border-radius: 15px;
+  font-size: 20px;
+  transition: all 400ms;
+  border: #383857 1px solid;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_header a:hover {
+  color: #383857;
+  background-color: #fff;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content {
+  transition: all 400ms;
+  height: calc(100vh - 200px);
+  overflow-y: scroll;
+  direction: rtl;
+  padding-left: 10px;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container {
+  direction: ltr;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box {
+  border-bottom: 2px #383857 solid;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_header {
+  padding: 4px;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_header h3 {
+  font-weight: 550;
+  font-family: "Montserrat", monospace;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_header h3 span {
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_content p {
+  border-top: dashed 1px #383857;
+  text-indent: 15px;
+  font-family: "Lato", serif;
+  text-align: justify-all;
+  padding: 6px;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box:last-child {
+  border-bottom: none;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .folded .icon {
+  transform: rotate(-90deg);
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .folded p {
+  display: none;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .unfolded .icon {
+  transform: rotate(0deg);
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .unfolded p {
+  display: block;
+}
+
+#project-board {
+  position: relative;
+  background-color: #DFCAC9;
+  padding: 10px;
+  height: calc(100vh - 70px);
+  width: calc(100vw - 250px);
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+#project-board .project-board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+#project-board .board-column {
+  background-color: #A0A5A6;
+  margin: 0 25px 0 25px;
+  width: 300px;
+  border: 1px black solid;
+  max-height: calc(100vh - 100px);
+  overflow: hidden;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 30px;
+  padding-bottom: 25px;
+}
+
+#project-board .board-column .board-column_head {
+  border-bottom: #272730 2px solid;
+}
+
+#project-board .board-column .board-column_head h1 {
+  text-align: center;
+  font-family: "Montserrat", monospace;
+  font-weight: 600;
+  padding: 10px;
+}
+
+#project-board .board-column .board-column_content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  padding: 10px;
+  min-height: 20px;
+}
+
+#project-board .board-column .board-column_content .tag {
+  margin: 10px 0;
+  background-color: #5F7177;
+  padding: 5px;
+  border-radius: 15px;
+  border: #383857 1px solid;
+}
+
+#project-board .board-column .board-column_content .tag .qualifier-back {
+  background-color: #108491;
+}
+
+#project-board .board-column .board-column_content .tag .qualifier-front {
+  background-color: #6845F7;
+}
+
+#project-board .board-column .board-column_content .tag .qualifier-hightpriority {
+  background-color: #C30033;
+}
+
+#project-board .board-column .board-column_content .tag .qualifier-mediumpriority {
+  background-color: #F7BE00;
+}
+
+#project-board .board-column .board-column_content .tag .qualifier-lowpriority {
+  background-color: #005844;
+}
+
+#project-board .board-column .board-column_content .tag .qualifier-item {
+  margin: 1px 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 100px;
+}
+
+#project-board .board-column .board-column_content .tag .tag_content p {
+  font-family: "Lato", serif;
+  color: white;
+  text-indent: 15px;
+  text-align: justify-all;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-top: #383857 1px solid;
+  padding: 5px;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .qualifier {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter {
+  width: 30%;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn {
+  background-color: #CB9D90;
+  border: 1px solid #CB9D90;
+  color: #5F7177;
+  text-align: center;
+  padding: 3px 3px;
+  border-radius: 30px;
+  transition: all 400ms;
+  position: relative;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  z-index: 12;
+  width: 250px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .qualifier-item {
+  visibility: hidden;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .qualifier-item a {
+  margin-top: 2px !important;
+  color: #fff !important;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .qualifier-item a:hover {
+  color: #383857;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .set_prioritie {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-evenly;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .set_part {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-evenly;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting h1 {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn:hover {
+  background-color: transparent;
+  color: #CB9D90;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn:hover .tag_setting {
+  background-color: #CB9D90;
+  color: #5F7177;
+  display: block;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn:hover .tag_setting .qualifier-item {
+  visibility: visible;
+}
+
+#project-board .add {
+  position: fixed;
+  z-index: 32;
+  right: 20px;
+  bottom: 30px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: rgba(24, 26, 27, 0.65);
+  padding: 10px;
+}
+
+#project-board .add a {
+  background-color: #007fff;
+  color: #fff;
+  border-radius: 10px;
+  padding: 7px;
+  cursor: pointer;
+}
+
 @-webkit-keyframes rotating {
   from {
     -webkit-transform: rotate(0deg);

@@ -45,7 +45,6 @@ Route::get('/admin/project/3', function (){return view('admin.project.view');})-
 Route::get('/admin/project/3/modify', function (){return view('admin.project.modify');})->name('admin.project.modify');
 Route::get('/admin/project/3/board', function (){return view('admin.project.board');})->name('admin.project.board');
 Route::get('/admin/project/create', function (){return view('admin.project.create');})->name('admin.project.create');
-Route::get('/admin/project/3/update/4', function (){return view('admin.project.update.index');})->name('admin.project.update');
 Route::get('/admin/project/3/update/create', function (){return view('admin.project.update.create');})->name('admin.project.update.create');
     // Admin - mail
 Route::get('/admin/mail', function (){return view('admin.mail.index');})->name('admin.mail');

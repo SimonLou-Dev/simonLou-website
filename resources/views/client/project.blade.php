@@ -36,7 +36,9 @@
                     </div>
                     <h2>Mises à jour :</h2>
                     <div class="list-of-maj">
-                        <div class="maj-item">V1.2.3</div>
+                        <div class="maj-item" data-toggle="modal" data-target="#v123">
+                                V1.2.3
+                        </div>
                         <div class="maj-item">V1.1.0</div>
                         <div class="maj-item">V1.0.5</div>
                         <div class="maj-item">V0.1.0</div>
@@ -63,5 +65,25 @@
         </div>
     </div>
 
+<div class="modal fade" id="v123" tabindex="-1" aria-labelledby="v1.2.3Label" aria-hidden="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
+

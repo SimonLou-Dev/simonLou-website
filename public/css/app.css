@@ -6821,6 +6821,7 @@ footer .infos p {
 }
 
 #projet_admin_menu {
+  background-color: #DFCAC9;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -6872,6 +6873,7 @@ footer .infos p {
 }
 
 #view_project {
+  background-color: #DFCAC9;
   width: 100%;
   height: calc(100vh - 70px);
 }
@@ -6898,9 +6900,9 @@ footer .infos p {
 }
 
 #view_project .view-project .infos .project-card {
+  background-color: #A0A5A6;
   margin: auto;
   max-width: 400px;
-  background-color: #f7fafc;
   border: 2px solid #272730;
   border-radius: 30px;
 }
@@ -6939,7 +6941,7 @@ footer .infos p {
 #view_project .view-project .maj .maj-list {
   width: 400px;
   border: #272730 3px solid;
-  background-color: #f7fafc;
+  background-color: #A0A5A6;
   border-radius: 30px 30px 0 0;
 }
 
@@ -7023,11 +7025,31 @@ footer .infos p {
   border-bottom: none;
 }
 
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_footer {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-top: dashed 1px #383857;
+  width: 100%;
+  padding: 6px;
+  justify-content: space-between;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_footer a,
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .maj-box .maj-box_footer p {
+  font-family: "Lato", serif;
+  font-size: 20px;
+  width: 15%;
+}
+
 #view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .folded .icon {
   transform: rotate(-90deg);
 }
 
 #view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .folded p {
+  display: none;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .folded .maj-box_footer {
   display: none;
 }
 
@@ -7037,6 +7059,10 @@ footer .infos p {
 
 #view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .unfolded p {
   display: block;
+}
+
+#view_project .view-project .maj .maj-list .maj-list_content .maj-box-container .unfolded .maj-box_footer {
+  display: flex;
 }
 
 #project-board {
@@ -7247,6 +7273,298 @@ footer .infos p {
   border-radius: 10px;
   padding: 7px;
   cursor: pointer;
+}
+
+#project_create_update {
+  background-color: #DFCAC9;
+  padding: 10px;
+  height: calc(100vh - 70px);
+  width: calc(100vw - 250px);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+}
+
+#project_create_update .project_create-update {
+  border: 2px #383857 solid;
+  padding: 10px;
+  border-radius: 30px;
+  margin: auto;
+  min-width: 500px;
+  height: 700px;
+  max-width: 700px;
+  overflow-y: scroll;
+}
+
+#project_create_update .project_create-update form {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+#project_create_update .project_create-update form .form-header {
+  display: flex;
+}
+
+#project_create_update .project_create-update form .form-header h1 {
+  margin: 10px auto;
+  max-width: 300px;
+  word-break: break-word;
+  text-align: center;
+  font-weight: 600;
+  font-size: 40px;
+  font-family: "Montserrat", monospace;
+}
+
+#project_create_update .project_create-update form .part-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#project_create_update .project_create-update form .part-form label {
+  font-family: "Lato", serif;
+  font-size: 20px;
+}
+
+#project_create_update .project_create-update form .part-form input,
+#project_create_update .project_create-update form .part-form textarea {
+  background-color: #5F7177;
+  font-family: "Lato", serif;
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: none;
+  border: 1px #383857 solid;
+}
+
+#project_create_update .project_create-update form .check {
+  display: flex;
+  flex-direction: row !important;
+}
+
+#project_create_update .project_create-update form .check label {
+  font-family: "Lato", serif;
+  font-size: 20px;
+}
+
+#project_create_update .project_create-update form .check input {
+  transform: scale(1.35);
+  margin-left: 10px;
+  background-color: #5F7177;
+  color: #5F7177;
+}
+
+#project_create_update .project_create-update form button {
+  background-color: #A0A5A6;
+  border: 1px #383857 solid;
+  border-radius: 30px;
+  font-family: "Montserrat", monospace;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 3px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+#create_project {
+  padding: 10px;
+  height: calc(100vh - 70px);
+  width: calc(100vw - 250px);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+}
+
+#create_project .create_project {
+  background-color: #DFCAC9;
+  border: 2px #383857 solid;
+  padding: 10px;
+  border-radius: 30px;
+  margin: auto;
+  width: 500px;
+  height: 700px;
+  overflow-y: scroll;
+}
+
+#create_project .create_project form {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+#create_project .create_project form .form_header {
+  display: flex;
+}
+
+#create_project .create_project form .form_header h1 {
+  margin: 10px auto;
+  max-width: 300px;
+  word-break: break-word;
+  text-align: center;
+  font-weight: 600;
+  font-size: 40px;
+  font-family: "Montserrat", monospace;
+}
+
+#create_project .create_project form .part-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#create_project .create_project form .part-form label {
+  font-family: "Lato", serif;
+  font-size: 20px;
+}
+
+#create_project .create_project form .part-form input,
+#create_project .create_project form .part-form textarea,
+#create_project .create_project form .part-form select {
+  background-color: #5F7177;
+  font-family: "Lato", serif;
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: none;
+  border: 1px #383857 solid;
+}
+
+#create_project .create_project form .checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#create_project .create_project form .checkbox .line {
+  max-width: 49%;
+  display: flex;
+  flex-direction: row;
+}
+
+#create_project .create_project form .checkbox .line label {
+  font-family: "Lato", serif;
+  font-size: 20px;
+}
+
+#create_project .create_project form .checkbox .line input {
+  transform: scale(1.35);
+  margin-left: 10px;
+  background-color: #5F7177;
+  color: #5F7177;
+}
+
+#create_project .create_project form button {
+  background-color: #A0A5A6;
+  border: 1px #383857 solid;
+  border-radius: 30px;
+  font-family: "Montserrat", monospace;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 3px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+#modify_project {
+  background-color: #DFCAC9;
+  padding: 10px;
+  height: calc(100vh - 70px);
+  width: calc(100vw - 250px);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+}
+
+#modify_project .modify_project {
+  background-color: #DFCAC9;
+  border: 2px #383857 solid;
+  padding: 10px;
+  border-radius: 30px;
+  margin: auto;
+  width: 500px;
+  height: 700px;
+  overflow-y: scroll;
+}
+
+#modify_project .modify_project form {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+#modify_project .modify_project form .form_header {
+  display: flex;
+}
+
+#modify_project .modify_project form .form_header h1 {
+  margin: 10px auto;
+  max-width: 300px;
+  word-break: break-word;
+  text-align: center;
+  font-weight: 600;
+  font-size: 40px;
+  font-family: "Montserrat", monospace;
+}
+
+#modify_project .modify_project form .part-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#modify_project .modify_project form .part-form label {
+  font-family: "Lato", serif;
+  font-size: 20px;
+}
+
+#modify_project .modify_project form .part-form input,
+#modify_project .modify_project form .part-form textarea,
+#modify_project .modify_project form .part-form select {
+  background-color: #5F7177;
+  font-family: "Lato", serif;
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: none;
+  border: 1px #383857 solid;
+}
+
+#modify_project .modify_project form .checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#modify_project .modify_project form .checkbox .line {
+  max-width: 49%;
+  display: flex;
+  flex-direction: row;
+}
+
+#modify_project .modify_project form .checkbox .line label {
+  font-family: "Lato", serif;
+  font-size: 20px;
+}
+
+#modify_project .modify_project form .checkbox .line input {
+  transform: scale(1.35);
+  margin-left: 10px;
+  background-color: #5F7177;
+  color: #5F7177;
+}
+
+#modify_project .modify_project form button {
+  background-color: #A0A5A6;
+  border: 1px #383857 solid;
+  border-radius: 30px;
+  font-family: "Montserrat", monospace;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 3px;
+  margin-top: 10px;
+  text-align: right;
 }
 
 @-webkit-keyframes rotating {

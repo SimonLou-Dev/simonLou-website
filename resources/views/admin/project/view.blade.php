@@ -65,6 +65,10 @@
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae purus scelerisque, tempor justo nec
                                     </p>
                                 </div>
+                                <div class="maj-box_footer">
+                                    <p>Publiée</p>
+                                    <a href=""><i class="far fa-check-square"></i></a>
+                                </div>
                             </div>
                             <div class="maj-box">
                                 <div class="maj-box_header folded">
@@ -166,7 +170,7 @@
 <script type="text/javascript">
     $( document ).ready(function() {
         $('.maj-box').addClass('folded');
-        
+
         $('h3').click(function (event){
             var elem = $(this).get(0);
             var attr = elem.getAttribute('target')

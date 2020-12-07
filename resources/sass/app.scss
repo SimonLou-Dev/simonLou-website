@@ -1229,7 +1229,7 @@ footer{
     }
 }
 
-// Page of Ticket Chat
+// Page of Ticket Chat (admin & client)
 #ticket-chat{
     width: 100%;
     height: 100vh;
@@ -1276,6 +1276,33 @@ footer{
                 text-indent: 15px;
                 margin: 20px 0;
                 min-height: 50%;
+            }
+            .item-admin{
+                font-family: "Lato", serif;
+                font-weight: 500;
+                font-size: 20px;
+                text-indent: 15px;
+                margin: 20px 0;
+                min-height: 50%;
+                .item-action{
+                    display: flex;
+                    width: 100%;
+                    margin-top: 15px;
+                    .item-btn{
+                        margin: 0 auto;
+                        background: linear-gradient(135deg, rgba(237,152,14,1) 0%, rgba(255,89,0,1) 100%);
+                        padding: 10px 12px 10px 10px;
+                        border-radius: 30px;
+                        color: #fff;
+                        border: #e25f34 1px solid;
+                        &:hover{
+                            text-decoration: none;
+                            background: linear-gradient(135deg, rgba(237,152,14,1) 0%, rgba(255,89,0,1) 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+                    }
+                }
             }
             .item-footer{
                 h4{
@@ -2658,7 +2685,90 @@ footer{
     }
 }
 
-
+//Admin - tickets - index
+#tickets_admin{
+    padding: 10px;
+    height: calc(100vh - 70px);
+    width: calc(100vw - 250px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    .tickets_admin{
+        margin: auto auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 100%;
+        .items {
+            min-width: 300px;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            border: #e25f34 3px solid;
+            padding: 15px;
+            border-radius: 35px;
+            margin: 20px 20px;
+            max-width: 350px;
+            text-align: center;
+            a{
+                text-decoration: none;
+            }
+            .processing{
+                margin: auto;
+                padding: 10px;
+                border-radius: 30px;
+                width: fit-content;
+                background-color: #ed980e;
+                color: #fff;
+                text-transform: uppercase;
+                font-family: "Montserrat", monospace;
+                font-weight: 600;
+                span{
+                    margin-right: 5px;
+                    svg{
+                        animation: rotating 2s linear infinite;
+                    }
+                }
+            }
+            .item-header{
+                border-top: #e25f34 1px solid;
+                border-bottom: #e25f34 1px solid;
+                margin: 10px 2px;
+                color: #000;
+                h2{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 700;
+                    font-size: 30px;
+                }
+                h4{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 300;
+                    font-size: 17px;
+                }
+            }
+            .item-content{
+                font-family: "Lato", serif;
+                font-weight: 500;
+                font-size: 17px;
+                color: #000;
+            }
+            .item-footer{
+                border-top: #e25f34 1px solid;
+                margin: 10px 2px 0 2px;
+                color: #000;
+                h4{
+                    line-height: 50px;
+                    font-family: "Montserrat", monospace;
+                    font-weight: 500;
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
 
 
 

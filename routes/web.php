@@ -56,8 +56,6 @@ Route::get('/admin/tickets', function (){return view('admin.tickets.index');})->
 Route::get('/admin/ticket/5/reply', function (){return view('admin.tickets.reply');})->name('admin.tickets.reply');
     //Admin - contact
 Route::get('/admin/contact', function (){return view('admin.contact.index');})->name('admin.contact');
-    //Admin - todo_list
-Route::get('/admin/todolist', function (){return view('admin.todolist.index');})->name('admin.todolist');
     //Admin - management
 Route::get('/admin/management/content', function (){return view('admin.management.index');})->name('admin.management.content');
 Route::get('/admin/management/user', function (){return view('admin.management.user');})->name('admin.management.user');

@@ -19,9 +19,6 @@
                 <a href="{{route('admin.tickets')}}" class="nav-link">Tickets</a>
             </li>
             <li class="nav-item">
-                <a href="{{route('admin.todolist')}}" class="nav-link">To do List</a>
-            </li>
-            <li class="nav-item">
                 <a href="{{route('admin.contact')}}" class="nav-link">Contact</a>
             </li>
             <li class="nav-item">

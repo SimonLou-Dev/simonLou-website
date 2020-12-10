@@ -2863,22 +2863,22 @@ footer{
         }
         .mail-head{
             display: flex;
-            flex-direction: row;
+            flex-direction: row-reverse;
             width: 100%;
             height: 50px;
             nav{
                 background-color: $violet_dark;
-                border-radius: 0 30px 30px 0;
+                border-radius: 30px 0 0 30px;
                 width: 70%;
                 display: flex;
                 ul{
-                    margin: auto 0;
+                    margin: auto auto;
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-evenly;
+                    justify-content: space-between;
                     width: 100%;
                     height: 100%;
-                    padding: 0;
+                    padding: 0 15px;
                     list-style: none;
                     li{
                         height: 100%;
@@ -2890,6 +2890,7 @@ footer{
                             font-family: "Lato", serif;
                             font-weight: 800;
                             font-size: 20px;
+                            text-transform: capitalize;
                         }
                         .start{
                             color: orange;
@@ -2912,19 +2913,80 @@ footer{
         }
         // Mail - index - box
         .mail-box{
-            padding: 30px 0 0 0;
+            margin-top: 30px;
+            padding: 5px 0 0 0;
             width: calc(100vw - 250px);
             height: calc(100vh - 50px);
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            background-color: rgba(0,0,0,0.3);
+            .mail-header{
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .mail-selected-infos{
+                    padding-left: 25px;
+                    width: 150px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    button{
+                        background-color: transparent;
+                        border: none;
+                        box-shadow: none;
+                        transition: all 400ms;
+                        img{
+                            max-width: 30px;
+                            max-height: 30px;
+                        }
+                        &:hover{
+                            transform: scale(1.2);
+                        }
+                    }
+                    .more_infos{
+                        transform: rotate(90deg);
+                    }
+                    .check, .add_to_fav{
+                        display: none;
+                    }
+                    .any{
+                        display: block;
+                    }
+                }
+                .pagination{
+                    display: flex;
+                    flex-direction: row;
+                    padding-right: 17px;
+                    a{
+                        width: 100%;
+                    }
+                    img{
+                        width: 100%;
+                    }
+                    a img{
+                        max-width: 30px;
+                        max-height: 30px;
+                    }
+                    a:first-child{
+                        img{
+                            transform: rotate(180deg);
+                        }
+                    }
+                    p{
+                        margin: 0px 2px 12px 2px;
+                        font-size: 22px;
+                        font-family: "Lato", monospace;
+                        color: rgba(255,255,255,0.7);
+                    }
+                }
+            }
 
             .mail{
-                &:first-child{
-                    border-top: $cream_white 1px solid;
-                }
                 transition: all 400ms;
-                background-color: rgba(39, 39, 48, 0.5);
+                background-color: rgba(0, 0, 0, 0.5);
                 border-bottom: $cream_white 1px solid;
                 padding: 2px;
                 $mail_font_size: 22px;
@@ -2961,6 +3023,9 @@ footer{
 
 
 
+            }
+            .new{
+                background-color: rgba(0,0,0,0.95);
             }
         }
     }

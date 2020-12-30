@@ -1,4 +1,8 @@
 <?php
+/*
+ * Copyright (c) 2020. Simon Lou - Web developer, designer &  integrator
+ * https://www.simon-lou.com
+ */
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -47,11 +51,12 @@ Route::get('/admin/project/3/board', function (){return view('admin.project.boar
 Route::get('/admin/project/create', function (){return view('admin.project.create');})->name('admin.project.create');
 Route::get('/admin/project/3/update/create', function (){return view('admin.project.update.create');})->name('admin.project.update.create');
     // Admin - mail
+/*
 Route::get('/admin/mail', function (){return view('admin.mail.index');})->name('admin.mail');
 Route::get('/admin/mail/read/4', function (){return view('admin.mail.read');})->name('admin.mail.read');
 Route::get('/admin/mail/create', function (){return view('admin.mail.create');})->name('admin.mail.create');
 Route::get('/admin/mail/reply/5', function (){return view('admin.mail.reply');})->name('admin.mail.reply');
-    //Admin - tickets
+   */ //Admin - tickets
 Route::get('/admin/tickets', function (){return view('admin.tickets.index');})->name('admin.tickets');
 Route::get('/admin/ticket/5/reply', function (){return view('admin.tickets.reply');})->name('admin.tickets.reply');
     //Admin - contact

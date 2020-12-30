@@ -92,9 +92,6 @@
         </section>
         <section class="divers_infos">
             <div class="admin-popup">
-                <p><span class="number">0</span> nouveau(x) mail(s)</p>
-            </div>
-            <div class="admin-popup">
                 <p><span class="number">0</span> nouveau(x) contact(s)</p>
             </div>
             <div class="admin-popup">

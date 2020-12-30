@@ -21,15 +21,12 @@
             <li class="nav-item">
                 <a href="{{route('admin.contact')}}" class="nav-link">Contact</a>
             </li>
-            <li class="nav-item">
-                <a href="{{route('admin.mail')}}" class="nav-link">Messagerie</a>
-            </li>
+            <!--<li class="nav-item">
+                <a href="" class="nav-link">Messagerie</a>
+            </li>-->
             <li class="nav-item dropper">
                 <a id="btn_site_management" class="nav-link  btn_dropper"><span class="menu_dropper" ><i id="img_site_management" class="fas fa-angle-down"></i></span> Gestion du site</a>
                 <ul class="dropped" id="site_management">
-                    <li class="dropped-item">
-                        <a href="{{route('admin.management.user')}}">Liste des utilisateurs</a>
-                    </li>
                     <li class="dropped-item">
                         <a href="{{route('admin.management.content')}}">Gestion de contenu</a>
                     </li>

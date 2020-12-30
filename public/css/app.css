@@ -7699,298 +7699,415 @@ footer .infos p {
   font-size: 24px;
 }
 
-#admin-mail {
-  height: 100vh;
+/*
+#admin-mail{
+    height: 100vh;
+    width: calc(100vw - 250px);
+    .bg{
+        background-image: url("../assets/img/wolf.jpg");
+    }
+    .bg2{
+        background-image: url("../assets/img/wolf2.jpg");
+    }
+    .admin-mail-bg{
+        position: absolute;
+        height: 100vh;
+        width: calc(100vw - 250px);
+        overflow: hidden;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
+        z-index: 0;
+    }
+
+    .admin-mail{
+        position: relative;
+        z-index: 1;
+        filter: none !important;
+        -webkit-filter: none !important;
+        background-color: transparent;
+        .mail-new{
+            width: 600px;
+            height: 600px;
+            bottom: 0;
+            background-color: $violet_light;
+            border-top: 2px solid $violet_dark;
+            border-right: 2px solid $violet_dark;
+            position: fixed;
+            z-index: 3;
+            border-radius: 0 50px 0 0;
+            form{
+                padding-top: 30px;
+                width: 100%;
+                height: calc(600px - 50px);
+                .mail-header{
+                    height: 120px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    .head_part{
+                        width: 90%;
+                        padding: 10px;
+                        margin: 0 auto;
+                        border-bottom: 2px solid $violet_dark;
+                        input{
+                            font-family: "Montserrat", monospace;
+                            font-size: 20px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+                .mail-text{
+                    width: 100%;
+                    height: max-content;
+                    textarea{
+                        padding: 15px;
+                        font-family: "Lato", serif;
+                        font-size: 18px;
+                        width: 100%;
+                        height: 390px;
+                        overflow-y: visible;
+                    }
+                }
+            }
+            input, textarea{
+                background-color: $violet_light;
+                box-shadow: none;
+                border: none;
+            }
+            .mail-content{
+                width: 100%;
+                height: 100%;
+                overflow-y: hidden;
+            }
+            .mail-footer{
+                position: absolute;
+                bottom: 0px;
+                width: 100%;
+                height: 50px;
+                background-color: $violet_dark;
+            }
+        }
+        .mail-head{
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            height: 50px;
+            nav{
+                background-color: $violet_dark;
+                border-radius: 30px 0 0 30px;
+                width: 70%;
+                display: flex;
+                ul{
+                    margin: auto auto;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 15px;
+                    list-style: none;
+                    li{
+                        height: 100%;
+                        display: flex;
+                        a{
+                            margin: 6px 0;
+                            height: 100%;
+                            color: #fff;
+                            font-family: "Lato", serif;
+                            font-weight: 800;
+                            font-size: 20px;
+                            text-transform: capitalize;
+                        }
+                        .start{
+                            color: orange;
+                        }
+                    }
+                }
+            }
+            .text{
+                width: 30%;
+                display: flex;
+                h2{
+                    margin: auto auto;
+                    text-align: center;
+                    font-family: "Montserrat", monospace;
+                    font-weight: 700;
+                    font-size: 40px;
+                    color: #fff;
+                }
+            }
+        }
+        // Mail - index - box
+        .mail-box{
+            margin-top: 30px;
+            padding: 5px 0 0 0;
+            width: calc(100vw - 250px);
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0,0,0,0.3);
+            .mail-header{
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .mail-selected-infos{
+                    padding-left: 25px;
+                    width: 150px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    button{
+                        background-color: transparent;
+                        border: none;
+                        box-shadow: none;
+                        transition: all 400ms;
+                        img{
+                            max-width: 30px;
+                            max-height: 30px;
+                        }
+                        &:hover{
+                            transform: scale(1.2);
+                        }
+                    }
+                    .more_infos{
+                        transform: rotate(90deg);
+                    }
+                    .check{
+                        display: block;
+                    }
+                }
+                .pagination{
+                    display: flex;
+                    flex-direction: row;
+                    padding-right: 17px;
+                    a{
+                        width: 100%;
+                    }
+                    img{
+                        width: 100%;
+                    }
+                    a img{
+                        max-width: 30px;
+                        max-height: 30px;
+                    }
+                    a:first-child{
+                        img{
+                            transform: rotate(180deg);
+                        }
+                    }
+                    p{
+                        margin: 0px 2px 12px 2px;
+                        font-size: 22px;
+                        font-family: "Lato", monospace;
+                        color: rgba(255,255,255,0.7);
+                    }
+                }
+            }
+
+            .mail{
+                transition: all 400ms;
+                background-color: rgba(0, 0, 0, 0.5);
+                border-bottom: $cream_white 1px solid;
+                padding: 2px;
+                $mail_font_size: 22px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                .action{
+                    width: calc(100vw / 6);
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    z-index: 10;
+                    button{
+                        z-index: 100;
+                        background: transparent;
+                        border: none;
+                    }
+                }
+                .sender{
+                    width: calc(100vw / 6*2);
+                    h2{
+                        font-family: "Montserrat", monospace;
+                        font-weight: 800;
+                    }
+
+                }
+                .object{
+                    max-width: calc((100vw / 6*3) - 20px);
+                    width: calc((100vw / 6*3) - 20px);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: clip;
+                    margin-right: 20px;
+                }
+                .date{
+                    width: calc(100vw / 6*2);
+
+                }
+                .mail-content{
+                    h2{
+                        font-size: $mail_font_size;
+                        color: $cream_white;
+                    }
+                }
+                &:hover{
+                    background-color: rgba(39, 39, 48, 0.8);
+                }
+
+
+
+            }
+            .new{
+                background-color: rgba(0,0,0,0.95);
+            }
+            .selected{
+                background-color: rgba(0, 42, 188, 0.55);
+            }
+        }
+    }
+}
+*/
+
+#user-contact {
+  height: calc(100vh - 70px);
   width: calc(100vw - 250px);
-}
-
-#admin-mail .bg {
-  background-image: url(/images/wolf.jpg?291a6bfe7f563132c617a1512416f1f0);
-}
-
-#admin-mail .bg2 {
-  background-image: url(/images/wolf2.jpg?16506eefd37cbedb98fcca6345f26738);
-}
-
-#admin-mail .admin-mail-bg {
-  position: absolute;
-  height: 100vh;
-  width: calc(100vw - 250px);
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
-  z-index: 0;
-}
-
-#admin-mail .admin-mail {
-  position: relative;
-  z-index: 1;
-  filter: none !important;
-  -webkit-filter: none !important;
-  background-color: transparent;
-}
-
-#admin-mail .admin-mail .mail-new {
-  width: 600px;
-  height: 600px;
-  bottom: 0;
-  background-color: #383857;
-  border-top: 2px solid #272730;
-  border-right: 2px solid #272730;
-  position: fixed;
-  z-index: 3;
-  border-radius: 0 50px 0 0;
-}
-
-#admin-mail .admin-mail .mail-new form {
-  padding-top: 30px;
-  width: 100%;
-  height: calc(600px - 50px);
-}
-
-#admin-mail .admin-mail .mail-new form .mail-header {
-  height: 120px;
-  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
-  flex-direction: column;
 }
 
-#admin-mail .admin-mail .mail-new form .mail-header .head_part {
-  width: 90%;
+#user-contact .user-contact {
+  width: 100%;
+  height: 100%;
   padding: 10px;
-  margin: 0 auto;
-  border-bottom: 2px solid #272730;
-}
-
-#admin-mail .admin-mail .mail-new form .mail-header .head_part input {
-  font-family: "Montserrat", monospace;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-#admin-mail .admin-mail .mail-new form .mail-text {
-  width: 100%;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-}
-
-#admin-mail .admin-mail .mail-new form .mail-text textarea {
-  padding: 15px;
-  font-family: "Lato", serif;
-  font-size: 18px;
-  width: 100%;
-  height: 390px;
-  overflow-y: visible;
-}
-
-#admin-mail .admin-mail .mail-new input,
-#admin-mail .admin-mail .mail-new textarea {
-  background-color: #383857;
-  box-shadow: none;
-  border: none;
-}
-
-#admin-mail .admin-mail .mail-new .mail-content {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
-
-#admin-mail .admin-mail .mail-new .mail-footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 50px;
-  background-color: #272730;
-}
-
-#admin-mail .admin-mail .mail-head {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
-  height: 50px;
-}
-
-#admin-mail .admin-mail .mail-head nav {
-  background-color: #272730;
-  border-radius: 30px 0 0 30px;
-  width: 70%;
-  display: flex;
-}
-
-#admin-mail .admin-mail .mail-head nav ul {
-  margin: auto auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 0 15px;
-  list-style: none;
-}
-
-#admin-mail .admin-mail .mail-head nav ul li {
-  height: 100%;
-  display: flex;
-}
-
-#admin-mail .admin-mail .mail-head nav ul li a {
-  margin: 6px 0;
-  height: 100%;
-  color: #fff;
-  font-family: "Lato", serif;
-  font-weight: 800;
-  font-size: 20px;
-  text-transform: capitalize;
-}
-
-#admin-mail .admin-mail .mail-head nav ul li .start {
-  color: orange;
-}
-
-#admin-mail .admin-mail .mail-head .text {
-  width: 30%;
-  display: flex;
-}
-
-#admin-mail .admin-mail .mail-head .text h2 {
-  margin: auto auto;
-  text-align: center;
-  font-family: "Montserrat", monospace;
-  font-weight: 700;
-  font-size: 40px;
-  color: #fff;
-}
-
-#admin-mail .admin-mail .mail-box {
-  margin-top: 30px;
-  padding: 5px 0 0 0;
-  width: calc(100vw - 250px);
-  height: calc(100vh - 50px);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-#admin-mail .admin-mail .mail-box .mail-header {
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos {
-  padding-left: 25px;
-  width: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos button {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  transition: all 400ms;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos button img {
-  max-width: 30px;
-  max-height: 30px;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos button:hover {
-  transform: scale(1.2);
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos .more_infos {
-  transform: rotate(90deg);
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos .check,
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos .add_to_fav {
-  display: none;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .mail-selected-infos .any {
-  display: block;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .pagination {
-  display: flex;
-  flex-direction: row;
-  padding-right: 17px;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .pagination a {
-  width: 100%;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .pagination img {
-  width: 100%;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .pagination a img {
-  max-width: 30px;
-  max-height: 30px;
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .pagination a:first-child img {
-  transform: rotate(180deg);
-}
-
-#admin-mail .admin-mail .mail-box .mail-header .pagination p {
-  margin: 0px 2px 12px 2px;
-  font-size: 22px;
-  font-family: "Lato", monospace;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-#admin-mail .admin-mail .mail-box .mail {
-  transition: all 400ms;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-bottom: #f7fafc 1px solid;
-  padding: 2px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-#admin-mail .admin-mail .mail-box .mail .action {
-  width: calc(100vw / 6);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
-#admin-mail .admin-mail .mail-box .mail .sender {
-  width: calc(100vw / 6*2);
+#user-contact .user-contact .contact-card {
+  width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  border: #272730 1px solid;
+  border-radius: 30px;
 }
 
-#admin-mail .admin-mail .mail-box .mail .object {
-  width: calc(100vw / 6*3);
+#user-contact .user-contact .contact-card .contact-card_header {
+  padding-top: 10px;
 }
 
-#admin-mail .admin-mail .mail-box .mail .date {
-  width: calc(100vw / 6*2);
+#user-contact .user-contact .contact-card .contact-card_header .name {
+  text-align: center;
+  font-family: "Montserrat", monospace;
+  font-weight: 700;
 }
 
-#admin-mail .admin-mail .mail-box .mail .mail-content h2 {
-  font-size: 22px;
-  color: #f7fafc;
+#user-contact .user-contact .contact-card .contact-card_header .mail {
+  text-align: center;
+  font-family: "Montserrat", monospace;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-#admin-mail .admin-mail .mail-box .mail:hover {
-  background-color: rgba(39, 39, 48, 0.8);
+#user-contact .user-contact .contact-card .separator {
+  margin: 5px auto;
+  height: 2px;
+  width: 70%;
+  background-color: #272730;
 }
 
-#admin-mail .admin-mail .mail-box .new {
-  background-color: rgba(0, 0, 0, 0.95);
+#user-contact .user-contact .contact-card .contact-card_content {
+  padding: 5px;
+}
+
+#user-contact .user-contact .contact-card .contact-card_content p {
+  text-indent: 15px;
+  font-family: Lato, serif;
+}
+
+#content-management {
+  height: calc(100vh - 70px);
+  width: calc(100vw - 250px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+}
+
+#content-management .content-management {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#content-management .content-management .manager {
+  display: flex;
+  flex-direction: column;
+}
+
+#content-management .content-management .manager .header h1 {
+  font-family: "Montserrat", monospace;
+  font-weight: 700;
+}
+
+#content-management .content-management .manager .add {
+  border: #272730 1px solid;
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+#content-management .content-management .manager .add h2 {
+  font-family: "Montserrat", monospace;
+  font-weight: 700;
+}
+
+#content-management .content-management .manager .add form {
+  display: flex;
+  flex-direction: column;
+}
+
+#content-management .content-management .manager .add form select,
+#content-management .content-management .manager .add form input {
+  margin: 10px;
+}
+
+#content-management .content-management .manager .delet {
+  border: #272730 1px solid;
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+#content-management .content-management .manager .delet h2 {
+  font-family: "Montserrat", monospace;
+  font-weight: 700;
+}
+
+#content-management .content-management .manager .delet form {
+  display: flex;
+  flex-direction: column;
+}
+
+#content-management .content-management .manager .delet form select,
+#content-management .content-management .manager .delet form input {
+  margin: 10px;
 }
 
 @-webkit-keyframes rotating {

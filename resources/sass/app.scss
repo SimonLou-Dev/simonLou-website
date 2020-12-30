@@ -2770,7 +2770,8 @@ footer{
     }
 }
 
-//Admin - mail - mail
+//Admin - mail - mail || DELET
+/*
 #admin-mail{
     height: 100vh;
     width: calc(100vw - 250px);
@@ -2949,10 +2950,7 @@ footer{
                     .more_infos{
                         transform: rotate(90deg);
                     }
-                    .check, .add_to_fav{
-                        display: none;
-                    }
-                    .any{
+                    .check{
                         display: block;
                     }
                 }
@@ -2998,14 +2996,28 @@ footer{
                     display: flex;
                     flex-direction: row;
                     justify-content: space-evenly;
+                    z-index: 10;
+                    button{
+                        z-index: 100;
+                        background: transparent;
+                        border: none;
+                    }
                 }
                 .sender{
                     width: calc(100vw / 6*2);
+                    h2{
+                        font-family: "Montserrat", monospace;
+                        font-weight: 800;
+                    }
 
                 }
                 .object{
-                    width: calc(100vw / 6*3);
-
+                    max-width: calc((100vw / 6*3) - 20px);
+                    width: calc((100vw / 6*3) - 20px);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: clip;
+                    margin-right: 20px;
                 }
                 .date{
                     width: calc(100vw / 6*2);
@@ -3027,11 +3039,132 @@ footer{
             .new{
                 background-color: rgba(0,0,0,0.95);
             }
+            .selected{
+                background-color: rgba(0, 42, 188, 0.55);
+            }
         }
     }
 }
+*/
 
+// Admin - user contact
+#user-contact{
+    height: calc(100vh - 70px);
+    width: calc(100vw - 250px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    .user-contact{
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        .contact-card{
+            width: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            border: $violet_dark 1px solid;
+            border-radius: 30px;
+            .contact-card_header{
+                padding-top: 10px;
+                .name{
+                    text-align: center;
+                   font-family: "Montserrat", monospace;
+                    font-weight: 700;
+                }
+                .mail{
+                    text-align: center;
+                    font-family: "Montserrat", monospace;
+                    font-weight: 500;
+                    font-size: 18px;
+                }
+            }
+            .separator{
+                margin: 5px auto;
+                height: 2px;
+                width: 70%;
+                background-color: $violet_dark;
+            }
+            .contact-card_content{
+                padding: 5px;
+                p{
+                    text-indent: 15px;
+                    font-family: Lato, serif;
+                }
+            }
+        }
+    }
 
+}
+
+//Admin - content management
+#content-management{
+    height: calc(100vh - 70px);
+    width: calc(100vw - 250px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    .content-management{
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        .manager{
+            display: flex;
+            flex-direction: column;
+            .header{
+                h1{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 700;
+                }
+            }
+            .add{
+                border: $violet_dark 1px solid;
+                margin: 15px 0;
+                padding: 20px;
+                border-radius: 30px;
+                h2{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 700;
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    select, input{
+                        margin: 10px;
+                    }
+                }
+            }
+            .delet{
+                border: $violet_dark 1px solid;
+                margin: 15px 0;
+                padding: 20px;
+                border-radius: 30px;
+                h2{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 700;
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    select, input{
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
 // Animation
 @-webkit-keyframes rotating {
     from{

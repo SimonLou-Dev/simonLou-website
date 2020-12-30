@@ -17,7 +17,7 @@ class CreateProjectEchangesTable extends Migration
             $table->id();
             $table->integer('project_id');
             $table->string('object');
-            $table->boolean('clodes')->default(false);
+            $table->boolean('closed')->default(false);
             $table->string('description');
             $table->integer('category_id');
             $table->timestamps();

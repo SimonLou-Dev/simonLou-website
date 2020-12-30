@@ -4,9 +4,9 @@
     <div id="projet_admin_menu">
             <nav>
                 <ul>
-                    <li><a href="{{route('admin.project')}}">Main</a> </li>
-                    <li><a href="{{route('admin.project.board')}}">Board</a> </li>
-                    <li><a href="{{route('admin.project.modify')}}">Modifier</a></li>
+                    <li><a href="{{route('admin.project', $project->id)}}">Main</a> </li>
+                    <li><a href="{{route('admin.project.board', $project->id)}}">Board</a> </li>
+                    <li><a href="{{route('admin.project.modify', $project->id)}}">Modifier</a></li>
                 </ul>
             </nav>
         <div class="name">
@@ -21,10 +21,10 @@
                         <h2>Informations sur le projet</h2>
                     </div>
                     <div class="project-card_content projectinfos">
-                        <h5><span>état :</span> En cours de développement</h5>
-                        <h5><span>date de création :</span> 13/02/2004</h5>
-                        <h5><span>dernière maj :</span> 13/01/2005</h5>
-                        <h5><span>version :</span> V1.5.8</h5>
+                        <h5><span>état :</span>{{$project->getstatus->name}}</h5>
+                        <h5><span>date de création :</span>{{$project->created_at}}</h5>
+                        <h5><span>dernière maj :</span></h5>
+                        <h5><span>version :</span></h5>
                         <h5><span>Type :</span> projet web</h5>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                         <h2>Informations sur le client</h2>
                     </div>
                     <div class="project-card_content clintinfos">
-                        <h5><span>Mail :</span> jean.claude.maire@uneboitedefou.com</h5>
-                        <h5><span>Nom & prenom:</span> José Marie Collé</h5>
+                        <h5><span>Mail :</span>{{$project->user->email}}</h5>
+                        <h5><span>Nom & prenom:</span>{{$project->user->name}}</h5>
                     </div>
                 </div>
                 <div class="project-card">
@@ -43,7 +43,7 @@
                     </div>
                     <div class="project-card_content projectdesc">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae purus scelerisque, tempor justo nec, auctor mi. Donec non augue ut nunc viverra malesuada vitae nec nibh. Morbi facilisis enim nisi, ac ultricies nunc congue eu. Vestibulum vehicula, mi maximus rhoncus auctor, enim dolor blandit orci, iaculis
+                          {{$project->description}}
                         </p>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="maj-list">
                     <div class="maj-list_header">
                         <h1>Liste des majs</h1>
-                        <a href="{{route('admin.project.update.create')}}"><i class="fas fa-plus"></i></a>
+                        <a href="{{route('admin.project.update.create', [$project->id])}}"><i class="fas fa-plus"></i></a>
                     </div>
                     <div class="maj-list_content">
                         <div class="maj-box-container">

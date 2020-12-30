@@ -17,23 +17,24 @@
         <!-- Porfolio art -->
         <div class="portfolio_content">
 
-            <!-- Portfolio Item 1-->
-            <div class="col-md-6 col-lg-4 mb-5">
+
+            @foreach($projects as $project)
+                <div class="col-md-6 col-lg-4 mb-5">
                 <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="" />
+                    <img class="img-fluid" src="{{$project->main_img}}" alt="" />
                     <div class="portfolio_info">
                         <div>
-                            <h6>14/02/8154</h6>
-                            <h5>Maison dans la prairie</h5>
+                            <h6>{{$project->created_at}}</h6>
+                            <h5>{{$project->title}}</h5>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Portfolio Modal -->
-            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+                <!-- Portfolio Modal -->
+                <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -45,8 +46,8 @@
                                     <div class="">
                                         <!-- Portfolio Modal - header-->
                                         <div class="portfolio_modal_header">
-                                            <h2 class="portfolio-modal-title">Maison dans la prairie</h2>
-                                            <h6 class="portfolio-modal-date">14/02/8154</h6>
+                                            <h2 class="portfolio-modal-title">{{$project->created_at}}</h2>
+                                            <h6 class="portfolio-modal-date">{{$project->title}}</h6>
 
                                         </div>
                                         <!-- Icon Divider-->
@@ -100,7 +101,7 @@
                                                 <div class="pm_infos">
                                                     <div class="pm_apptype">
                                                         <h5>Type de site : </h5>
-                                                        <p>Application Web & Intranet</p>
+                                                        <p></p>
                                                     </div>
                                                     <div class="pm_languages">
                                                         <h5>Languages & Framework : </h5>
@@ -114,7 +115,7 @@
                                                     </div>
                                                     <div class="pm_update">
                                                         <h5>Version & Mise à jour : </h5>
-                                                        <h6><span>Dernière mise à jour :</span> 15/05/9156</h6>
+                                                        <h6><span>Dernière mise à jour :</span>{{}}</h6>
                                                         <h6><span>Version :</span> V5.1.0</h6>
                                                     </div>
                                                     <div class="pm_avis">
@@ -149,6 +150,10 @@
                     </div>
                 </div>
             </div>
+
+
+            @endforeach
+            <!-- Portfolio Item 1-->
 
 
             <!-- Portfolio Item 2-->

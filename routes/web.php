@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', [\App\Http\Controllers\MainController::class, 'main'])->name('index');
 
 
 // Auth & Auth Verify Routes
@@ -44,12 +42,12 @@ Route::get('/client/project/1/ticket/1/chat', function (){return view('client.ti
 // Admin Route
 Route::get('/admin', function (){return view('admin.index');})->name('admin.index');
     //Admin - project
-Route::get('/admin/projects', function (){return view('admin.project.index');})->name('admin.project.all');
-Route::get('/admin/project/3', function (){return view('admin.project.view');})->name('admin.project');
-Route::get('/admin/project/3/modify', function (){return view('admin.project.modify');})->name('admin.project.modify');
-Route::get('/admin/project/3/board', function (){return view('admin.project.board');})->name('admin.project.board');
-Route::get('/admin/project/create', function (){return view('admin.project.create');})->name('admin.project.create');
-Route::get('/admin/project/3/update/create', function (){return view('admin.project.update.create');})->name('admin.project.update.create');
+Route::get('/admin/projects', [\App\Http\Controllers\ProjectController::class, 'index'])->name('admin.project.all');
+Route::get('/admin/project/{id}', [\App\Http\Controllers\ProjectController::class, 'show'])->name('admin.project');
+Route::get('/admin/project/{id}/modify', [\App\Http\Controllers\ProjectController::class, 'edit'])->name('admin.project.modify');
+Route::get('/admin/project/{id}/board', [\App\Http\Controllers\ProjectController::class, 'board'])->name('admin.project.board');
+Route::get('/admin/project/{id}/update/create', [\App\Http\Controllers\ProjectController::class, 'add_update'])->name('admin.project.update.create');
+Route::get('/admin/project/create', [\App\Http\Controllers\ProjectController::class, ''])->name('admin.project.create');
     // Admin - mail
 /*
 Route::get('/admin/mail', function (){return view('admin.mail.index');})->name('admin.mail');
@@ -62,9 +60,9 @@ Route::get('/admin/ticket/5/reply', function (){return view('admin.tickets.reply
     //Admin - contact
 Route::get('/admin/contact', function (){return view('admin.contact.index');})->name('admin.contact');
     //Admin - management
-Route::get('/admin/management/content', function (){return view('admin.management.index');})->name('admin.management.content');
-Route::get('/admin/management/user', function (){return view('admin.management.user');})->name('admin.management.user');
-Route::get('/admin/management/content/modify/lang', function (){return view('admin.management.modify.lang');})->name('admin.management.content.lang');
-Route::get('/admin/management/content/modify/cat', function (){return view('admin.management.modify.categories');})->name('admin.management.content.cat');
-Route::get('/admin/management/content/modify/status', function (){return view('admin.management.modify.status');})->name('admin.management.content.status');
-Route::get('/admin/management/content/modify/grade', function (){return view('admin.management.modify.grade');})->name('admin.management.content.grade');
+Route::get('/admin/management/content', [\App\Http\Controllers\ContentManagerController::class, 'index'])->name('admin.management.content');
+Route::post('/admin/management/content/add/lang', [\App\Http\Controllers\ContentManagerController::class, 'add_language'])->name('admin.management.content.lang.add');
+Route::post('/admin/management/content/add/ticketscat', [\App\Http\Controllers\ContentManagerController::class, 'add_ticketcat'])->name('admin.management.content.ticketscat.add');
+Route::post('/admin/management/content/add/status', [\App\Http\Controllers\ContentManagerController::class, 'add_projectstatus'])->name('admin.management.content.projectstatus.add');
+Route::post('/admin/management/content/remove/ticketscat', [\App\Http\Controllers\ContentManagerController::class, 'delet_ticketcat'])->name('admin.management.content.ticketscat.delete');
+Route::post('/admin/management/content/remove/status', [\App\Http\Controllers\ContentManagerController::class, 'delet_projectstatus'])->name('admin.management.content.projectstatus.delete');

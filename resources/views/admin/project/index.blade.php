@@ -37,23 +37,26 @@
     @else
     <section class="display">
 
-        <div class="project_item">
-            <a href="{{route('admin.project')}}">
-            <div class="item-header">
-                <h1>Je suis le nom</h1>
+        @foreach($projects as $project)
+            <div class="project_item">
+                <a href="{{route('admin.project', [$project->id])}}">
+                    <div class="item-header">
+                        <h1>{{$project->title}}</h1>
+                    </div>
+                    <div class="item-content">
+                        <h2><span>Type de projet:</span> {{$project->project_types->name}}</h2>
+                        <h2><span>Date de création :</span> {{$project->created_at}}</h2>
+                        <h2><span>Date de maj :</span> Je suis une catégorie</h2>
+                        <h2><span>Version :</span> {{$project->title}}</h2>
+                    </div>
+                    <div class="item-footer">
+                        <h2>{{$project->user->name}}</h2>
+                    </div>
+                </a>
             </div>
-            <div class="item-content">
-                <h2><span>Catégorie :</span> Je suis une catégorie</h2>
-                <h2><span>Date de création :</span> Je suis une catégorie</h2>
-                <h2><span>Date de maj :</span> Je suis une catégorie</h2>
-                <h2><span>Version :</span> Je suis une catégorie</h2>
-                <h2><span>Framework :</span> Laravel</h2>
-            </div>
-            <div class="item-footer">
-                <h2>Claude Michalet</h2>
-            </div>
-            </a>
-        </div>
+        @endforeach
+
+
         <div class="project_item">
             <a href="">
                 <div class="item-header">

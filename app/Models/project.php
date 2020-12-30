@@ -9,6 +9,7 @@ class project extends Model
 {
     use HasFactory;
 
+
     public function project_echange(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(project_echange::class, 'project_id');
@@ -41,7 +42,7 @@ class project extends Model
     {
         return $this->hasMany(project_images::class, 'project_id');
     }
-    public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function getstatus(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(status::class, 'status');
     }

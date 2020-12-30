@@ -19,7 +19,6 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->integer('client_id');
             $table->longText('description');
-            $table->string('longtext');
             $table->integer('type');
             $table->integer('user_rate');
             $table->integer('client_rate');
@@ -29,7 +28,8 @@ class CreateProjectsTable extends Migration
             $table->string('hostedby');
             $table->longText('hosted_infos');
             $table->boolean('in_wait');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

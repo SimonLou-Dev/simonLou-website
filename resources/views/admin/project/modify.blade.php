@@ -4,9 +4,9 @@
     <div id="projet_admin_menu">
         <nav>
             <ul>
-                <li><a href="{{route('admin.project')}}">Main</a> </li>
-                <li><a href="{{route('admin.project.board')}}">Board</a> </li>
-                <li><a href="{{route('admin.project.modify')}}">Modifier</a></li>
+                <li><a href="{{route('admin.project', $project->id)}}">Main</a> </li>
+                <li><a href="{{route('admin.project.board', $project->id)}}">Board</a> </li>
+                <li><a href="{{route('admin.project.modify', $project->id)}}">Modifier</a></li>
             </ul>
         </nav>
         <div class="name">

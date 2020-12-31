@@ -24,10 +24,11 @@ class CreateProjectsTable extends Migration
             $table->integer('client_rate');
             $table->boolean('ispublic')->default(false);
             $table->integer('status');
-            $table->string('gitlink');
+            $table->string('gitlink')->nullable();
+            $table->string('link');
             $table->string('hostedby');
             $table->longText('hosted_infos');
-            $table->boolean('in_wait');
+            $table->boolean('in_wait')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

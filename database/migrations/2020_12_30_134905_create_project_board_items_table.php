@@ -16,10 +16,11 @@ class CreateProjectBoardItemsTable extends Migration
         Schema::create('project_board_items', function (Blueprint $table) {
             $table->id();
             $table->integer('project_id');
-            $table->string('name');
-            $table->longText('content');
+            $table->mediumText('name');
             $table->integer('category');
-            $table->integer('type');
+            $table->integer('priority')->default(1);
+            $table->boolean('front')->default(false);
+            $table->boolean('back')->default(false);
             $table->timestamps();
         });
     }

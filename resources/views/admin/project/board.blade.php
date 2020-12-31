@@ -10,7 +10,7 @@
             </ul>
         </nav>
         <div class="name">
-            <h1>Project Name</h1>
+            <h1>{{$project->title}}</h1>
         </div>
     </div>
     <div id="project-board">
@@ -20,237 +20,58 @@
                     <h1>Bug</h1>
                 </div>
                 <div class="board-column_content">
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
+                    @foreach($bugs as $tag)
+                        <div class="tag">
+                            <div class="tag_content">
+                                <p>{{$tag->name}}</p>
                             </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                    </div>
+                            <div class="tag_footer">
+                                <div class="qualifier">
+                                    @switch($tag->priority)
+                                        @case(1)
+                                            <div class="qualifier-item qualifier-lowpriority"></div>
+                                        @break
+                                        @case(2)
+                                            <div class="qualifier-item qualifier-mediumpriority"></div>
+                                        @break
+                                        @case(3)
+                                            <div class="qualifier-item qualifier-hightpriority"></div>
+                                        @break
+                                    @endswitch
+                                    @if($tag->front)
+                                            <div class="qualifier-item qualifier-front"></div>
+                                    @endif
+                                    @if($tag->back)
+                                            <div class="qualifier-item qualifier-back"></div>
+                                    @endif
 
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
-                            </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
+                                <div class="setter">
+                                    <div class="setter_btn"><i class="fas fa-plus"></i>
+                                        <div class="tag_setting">
+                                            <div class="set_prioritie">
+                                                <h1>Priorité : </h1>
+                                                <div class="qualifier-item qualifier-lowpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 1])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-mediumpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 2])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-hightpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 3])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_part">
+                                                <h1>Espace :</h1>
+                                                <div class="qualifier-item qualifier-back"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "back"])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-front"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "front"])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_cat">
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 1])}}">Bug</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 2])}}">A faire</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 3])}}">En Cours</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 4])}}">Terminé</a>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
-                            </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
-                            </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
-                            </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
-                            </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tag">
-                        <div class="tag_content">
-                            <p>Cannabis persuaderes, tanquam gratis medicina gemnas sunt sensorem.</p>
-                        </div>
-                        <div class="tag_footer">
-                            <div class="qualifier">
-                                <div class="qualifier-item qualifier-back"></div>
-                                <div class="qualifier-item qualifier-front"></div>
-                                <div class="qualifier-item qualifier-lowpriority"></div>
-                                <div class="qualifier-item qualifier-mediumpriority"></div>
-                                <div class="qualifier-item qualifier-hightpriority"></div>
-                            </div>
-                            <div class="setter">
-                                <div class="setter_btn"><i class="fas fa-plus"></i>
-                                    <div class="tag_setting">
-                                        <div class="set_prioritie">
-                                            <h1>Priorité : </h1>
-                                            <div class="qualifier-item qualifier-lowpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-mediumpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-hightpriority"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                        <div class="set_part">
-                                            <h1>Espace :</h1>
-                                            <div class="qualifier-item qualifier-back"><a href=""><i class="fas fa-plus"></i></a></div>
-                                            <div class="qualifier-item qualifier-front"><a href=""><i class="fas fa-plus"></i></a></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </section>
             <section class="board-column">
@@ -258,15 +79,117 @@
                     <h1>A faire</h1>
                 </div>
                 <div class="board-column_content">
+                    @foreach($forlaters as $tag)
+                        <div class="tag">
+                            <div class="tag_content">
+                                <p>{{$tag->name}}</p>
+                            </div>
+                            <div class="tag_footer">
+                                <div class="qualifier">
+                                    @switch($tag->priority)
+                                        @case(1)
+                                        <div class="qualifier-item qualifier-lowpriority"></div>
+                                        @break
+                                        @case(2)
+                                        <div class="qualifier-item qualifier-mediumpriority"></div>
+                                        @break
+                                        @case(3)
+                                        <div class="qualifier-item qualifier-hightpriority"></div>
+                                        @break
+                                    @endswitch
+                                    @if($tag->front)
+                                        <div class="qualifier-item qualifier-front"></div>
+                                    @endif
+                                    @if($tag->back)
+                                        <div class="qualifier-item qualifier-back"></div>
+                                    @endif
 
+                                </div>
+                                <div class="setter">
+                                    <div class="setter_btn"><i class="fas fa-plus"></i>
+                                        <div class="tag_setting">
+                                            <div class="set_prioritie">
+                                                <h1>Priorité : </h1>
+                                                <div class="qualifier-item qualifier-lowpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 1])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-mediumpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 2])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-hightpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 3])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_part">
+                                                <h1>Espace :</h1>
+                                                <div class="qualifier-item qualifier-back"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "back"])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-front"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "front"])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_cat">
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 1])}}">Bug</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 2])}}">A faire</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 3])}}">En Cours</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 4])}}">Terminé</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </section>
             <section class="board-column">
                 <div class="board-column_head">
-                    <h1>En cour</h1>
+                    <h1>En cours</h1>
                 </div>
                 <div class="board-column_content">
+                    @foreach($inworks as $tag)
+                        <div class="tag">
+                            <div class="tag_content">
+                                <p>{{$tag->name}}</p>
+                            </div>
+                            <div class="tag_footer">
+                                <div class="qualifier">
+                                    @switch($tag->priority)
+                                        @case(1)
+                                        <div class="qualifier-item qualifier-lowpriority"></div>
+                                        @break
+                                        @case(2)
+                                        <div class="qualifier-item qualifier-mediumpriority"></div>
+                                        @break
+                                        @case(3)
+                                        <div class="qualifier-item qualifier-hightpriority"></div>
+                                        @break
+                                    @endswitch
+                                    @if($tag->front)
+                                        <div class="qualifier-item qualifier-front"></div>
+                                    @endif
+                                    @if($tag->back)
+                                        <div class="qualifier-item qualifier-back"></div>
+                                    @endif
 
+                                </div>
+                                <div class="setter">
+                                    <div class="setter_btn"><i class="fas fa-plus"></i>
+                                        <div class="tag_setting">
+                                            <div class="set_prioritie">
+                                                <h1>Priorité : </h1>
+                                                <div class="qualifier-item qualifier-lowpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 1])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-mediumpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 2])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-hightpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 3])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_part">
+                                                <h1>Espace :</h1>
+                                                <div class="qualifier-item qualifier-back"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "back"])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-front"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "front"])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_cat">
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 1])}}">Bug</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 2])}}">A faire</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 3])}}">En Cours</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 4])}}">Terminé</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </section>
             <section class="board-column">
@@ -274,7 +197,58 @@
                     <h1>Terminé</h1>
                 </div>
                 <div class="board-column_content">
+                    @foreach($endeds as $tag)
+                        <div class="tag">
+                            <div class="tag_content">
+                                <p>{{$tag->name}}</p>
+                            </div>
+                            <div class="tag_footer">
+                                <div class="qualifier">
+                                    @switch($tag->priority)
+                                        @case(1)
+                                        <div class="qualifier-item qualifier-lowpriority"></div>
+                                        @break
+                                        @case(2)
+                                        <div class="qualifier-item qualifier-mediumpriority"></div>
+                                        @break
+                                        @case(3)
+                                        <div class="qualifier-item qualifier-hightpriority"></div>
+                                        @break
+                                    @endswitch
+                                    @if($tag->front)
+                                        <div class="qualifier-item qualifier-front"></div>
+                                    @endif
+                                    @if($tag->back)
+                                        <div class="qualifier-item qualifier-back"></div>
+                                    @endif
 
+                                </div>
+                                <div class="setter">
+                                    <div class="setter_btn"><i class="fas fa-plus"></i>
+                                        <div class="tag_setting">
+                                            <div class="set_prioritie">
+                                                <h1>Priorité : </h1>
+                                                <div class="qualifier-item qualifier-lowpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 1])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-mediumpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 2])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-hightpriority"><a href="{{route('admin.project.board.card_setpriority', [$tag->id, 3])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_part">
+                                                <h1>Espace :</h1>
+                                                <div class="qualifier-item qualifier-back"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "back"])}}"><i class="fas fa-plus"></i></a></div>
+                                                <div class="qualifier-item qualifier-front"><a href="{{route('admin.project.board.card_setspace', [$tag->id, "front"])}}"><i class="fas fa-plus"></i></a></div>
+                                            </div>
+                                            <div class="set_cat">
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 1])}}">Bug</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 2])}}">A faire</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 3])}}">En Cours</a>
+                                                <a href="{{route('admin.project.board.card_setcategory', [$tag->id, 4])}}">Terminé</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </section>
         </div>
@@ -296,26 +270,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post" action="{{route('admin.project.add_cardboard', $project->id)}}">
                         @csrf
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nom</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="name" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Le Ranger</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Bugs</option>
-                                <option>A Faire</option>
-                                <option>En cours</option>
-                                <option>Terminé</option>
+                            <select class="form-control" name="category" id="exampleFormControlSelect1">
+                                <option value="1">Bugs</option>
+                                <option value="2">A Faire</option>
+                                <option value="3">En cours</option>
+                                <option value="4">Terminé</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect2">Espace</label>
-                            <select multiple class="form-control" id="exampleFormControlSelect2">
-                                <option>Front</option>
-                                <option>Back</option>
+                            <select multiple class="form-control" name="space[]" id="exampleFormControlSelect2">
+                                <option value="front">Front</option>
+                                <option value="back">Back</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

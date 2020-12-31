@@ -19,13 +19,28 @@
                 <a class="nav-link" href="{{route('index')}}#contact">Contact</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Espace client
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" style="color: black;" href="{{route('client.index')}}">Mes sites</a>
-                    <a class="dropdown-item" style="color: black;" href="{{route('client.tickets')}}">Mes tickets</a>
-                </div>
+                @if(\Illuminate\Support\Facades\Auth::user() &&\Illuminate\Support\Facades\Auth::user()->grade == 2)
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mon compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" style="color: black;" href="{{route('client.index')}}">Mes sites</a>
+                        <a class="dropdown-item" style="color: black;" href="{{route('client.tickets')}}">Mes tickets</a>
+                        <a class="dropdown-item" style="color: black;" href="{{route('logout')}}">Se déconnecter</a>
+                    </div>
+                @elseif(\Illuminate\Support\Facades\Auth::user() &&\Illuminate\Support\Facades\Auth::user()->grade == 3)
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mon compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" style="color: black;" href="{{route('admin.index')}}">Administration</a>
+                        <a class="dropdown-item" style="color: black;" href="{{route('logout')}}">Se déconnecter</a>
+                    </div>
+                @elseif(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->grade == 1)
+                    <a class="nav-link" href="{{route('logout')}}">Se déconnecter</a>
+                @else
+                    <a href="{{route('login')}}" class="nav-link">Se connecter</a>
+                @endif
             </li>
         </ul>
     </div>

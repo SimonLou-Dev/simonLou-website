@@ -10,34 +10,40 @@
             </ul>
         </nav>
         <div class="name">
-            <h1>Project Name</h1>
+            <h1>{{$project->title}}</h1>
         </div>
     </div>
     <div id="modify_project">
         <div class="modify_project">
-            <form enctype="multipart/form-data">
+            <form enctype="multipart/form-data" method="post" action="{{route('admin.project.modify.post', $project->id)}}">
+                @method('PUT')
+                @csrf
                 <div class="form_header">
                     <h1>Modifer un project</h1>
                 </div>
                 <div class="part-form">
                     <label for="projectname">Nom</label>
-                    <input id="projectname" name="projectname" type="text" required>
+                    <input id="projectname" name="projectname" value="{{$project->title}}" type="text" required>
                 </div>
                 <div class="part-form">
-                    <label for="projectdesc">Nom</label>
-                    <textarea id="projectdesc" name="projectdesc" required></textarea>
+                    <label for="projectdesc">Description</label>
+                    <textarea id="projectdesc" name="projectdesc" required>{{$project->description}}</textarea>
                 </div>
                 <div class="part-form">
                     <label for="clientmail">Email client</label>
-                    <input id="clientmail" name="clientmail" type="email" required>
+                    <input id="clientmail" name="clientmail" value="{{$project->user->email}}" type="email" required>
                 </div>
                 <div class="part-form">
                     <label for="domain">Domaine</label>
-                    <input id="domain" name="domain" type="text" value="https://www." required>
+                    <input id="domain" name="domain" type="text" value="{{$project->link}}" required>
                 </div>
                 <div class="part-form">
                     <label for="hoster">Hébergeur</label>
-                    <input id="hoster" name="hoster" type="text">
+                    <input id="hoster" name="hoster" value="{{$project->hostedby}}" type="text">
+                </div>
+                <div class="part-form">
+                    <label for="hostedinfos">Infos hébergement</label>
+                    <textarea id="hostedinfos" name="hostedinfos" required>{{$project->hosted_infos}}</textarea>
                 </div>
                 <div class="part-form">
                     <label for="img">Image</label>
@@ -46,48 +52,60 @@
                 <div class="part-form">
                     <label for="projecttype">Project Type</label>
                     <select id="projecttype" name="projecttype" required>
-                        <option>a</option>
-                        <option>b</option>
+                        @foreach($types as $type)
+                            @if($type->id == $project->type)
+                                <option value="{{$type->id}}" selected>{{$type->name}}</option>
+                            @else
+                                <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <div class="part-form">
-                    <label for="startstatus">Statut de départ</label>
+                    <label for="startstatus">Statut</label>
                     <select id="startstatus" name="startstatus" required>
-                        <option>a</option>
-                        <option>b</option>
+                        @foreach($statuses as $status)
+                            @if($status->id == $project->status)
+                                <option value="{{$status->id}}" selected>{{$status->name}}</option>
+                            @else
+                                <option value="{{$status->id}}">{{$status->name}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <div class="part-form">
                     <label for="languages">Languages</label>
-                    <select multiple id="languages" name="languages" required>
-                        <option>a</option>
-                        <option>b</option>
-                        <option>c</option>
-                        <option>d</option>
-                        <option>SEO</option>
-                        <option>design</option>
+                    @php
+
+                    @endphp
+                    <select multiple id="languages" name="languages[]" required>
+
+                        @foreach($langs as $lang)
+                            @if($projectlangs[$lang->name])
+                                <option selected value="{{$lang->id}}">{{$lang->name}}</option>
+                            @else
+                                <option value="{{$lang->id}}">{{$lang->name}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <div class="checkbox">
                     <div class="line">
-                        <label for="clientaccount">Créé un compte client <span>Si il existe pas</span></label>
-                        <input id="clientaccount" type="checkbox" name="create_clientaccount">
-                    </div>
-                    <div class="line">
-                        <label for="gitrepo">Create Git repo</label>
-                        <input id="gitrepo" type="checkbox" name="create_gitrepo">
-                    </div>
-                    <div class="line">
                         <label for="public">Public</label>
-                        <input id="public" type="checkbox" name="public">
+                        @if($project->ispublic)
+                            <input id="ispublic" type="checkbox" checked name="public">
+                        @else
+                            <input id="ispublic" type="checkbox"  name="public">
+                        @endif
+
                     </div>
                     <div class="line">
                         <label for="in_wait">En attente</label>
-                        <input id="in_wait" type="checkbox" name="in_wait">
-                    </div>
-                    <div class="line">
-                        <label for="advert_client">Avertir le client</label>
-                        <input id="advert_client" type="checkbox" name="advert_client">
+                        @if($project->inwait)
+                            <input id="in_wait" type="checkbox" checked name="in_wait">
+                        @else
+                            <input id="in_wait" type="checkbox"  name="in_wait">
+                        @endif
                     </div>
                 </div>
                 <button type="submit">Valider</button>

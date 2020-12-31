@@ -30,7 +30,7 @@ class project extends Model
     {
         return $this->hasMany(project_board_items::class,'project_id');
     }
-    public function project_update(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function project_updates(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(project_updates::class, 'project_id');
     }

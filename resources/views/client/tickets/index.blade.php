@@ -22,6 +22,7 @@
                <div class="item-header">
                    <h2>Je suis le nom</h2>
                    <h4>Je suis la catégorie</h4>
+                   <h6>Je suis le nom du projet</h6>
                </div>
                 <div class="item-content">
                     <p>Absolutios mori in tectum!Fortis brevis calcaria est. Nunquam locus glos. Calceus magnum accentor est.</p>

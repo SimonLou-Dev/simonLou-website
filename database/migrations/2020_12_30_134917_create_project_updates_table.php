@@ -18,8 +18,9 @@ class CreateProjectUpdatesTable extends Migration
             $table->integer('project_id');
             $table->string('version');
             $table->longText('content');
-            $table->boolean('publisched');
-            $table->timestamps();
+            $table->boolean('publisched')->default(false);
+            $table->date('created_at')->default(now());
+            $table->timestamp('updated_at')->default(now());
         });
     }
 

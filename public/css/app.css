@@ -4610,6 +4610,21 @@ body {
   width: 100%;
 }
 
+.contact_success {
+  top: 70px;
+  left: 10px;
+  width: 200px;
+  height: 60px;
+  position: fixed;
+  border-radius: 30px;
+  z-index: 70;
+  padding: 10px;
+  font-family: "Montserrat", monospace;
+  font-weight: 700;
+  font-size: 25px;
+  background-color: green;
+}
+
 /*
     *
     * Navbar & footer
@@ -5598,7 +5613,7 @@ footer .infos p {
 
 .rcv-content {
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh-20px);
   display: flex;
 }
 
@@ -5929,6 +5944,12 @@ footer .infos p {
   font-size: 17px;
 }
 
+#list-of-tickets .tickets-content .items .item-header h6 {
+  font-family: "Montserrat", monospace;
+  font-weight: 300;
+  font-size: 12px;
+}
+
 #list-of-tickets .tickets-content .items .item-content {
   font-family: "Lato", serif;
   font-weight: 500;
@@ -5996,6 +6017,12 @@ footer .infos p {
   font-family: "Montserrat", monospace;
   font-weight: 400;
   font-size: 25px;
+}
+
+#ticket-chat #chat-content .informations .item-header h6 {
+  font-family: "Montserrat", monospace;
+  font-weight: 300;
+  font-size: 12px;
 }
 
 #ticket-chat #chat-content .informations .item-content {
@@ -7227,11 +7254,11 @@ footer .infos p {
 #project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting {
   display: none;
   position: absolute;
-  bottom: 30px;
-  right: 10px;
+  bottom: -15px;
+  right: -10px;
   z-index: 12;
-  width: 250px;
-  height: 80px;
+  width: 280px;
+  height: 130px;
   padding: 10px;
   border-radius: 20px;
 }
@@ -7261,6 +7288,23 @@ footer .infos p {
   flex-direction: row;
   width: 200px;
   justify-content: space-evenly;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .set_cat {
+  display: flex;
+  flex-direction: row;
+  width: 260px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting .set_cat a {
+  background-color: #5F7177;
+  margin: 5px;
+  padding: 2px;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
 }
 
 #project-board .board-column .board-column_content .tag .tag_footer .setter .setter_btn .tag_setting h1 {

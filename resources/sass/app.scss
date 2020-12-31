@@ -19,6 +19,21 @@ body{
   width: 100%;
 }
 
+.contact_success{
+    top: 70px;
+    left: 10px;
+    width: 200px;
+    height: 60px;
+    position: fixed;
+    border-radius: 30px;
+    z-index: 70;
+    padding: 10px;
+    font-family: "Montserrat", monospace;
+    font-weight: 700;
+    font-size: 25px;
+    background-color: green;
+}
+
 // SCSS
 
 /*
@@ -922,7 +937,7 @@ footer{
 .rcv-content{
 
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh-20px);
   display: flex;
 
   .rcv-container{
@@ -1207,6 +1222,11 @@ footer{
                     font-weight: 300;
                     font-size: 17px;
                 }
+                h6{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 300;
+                    font-size: 12px;
+                }
             }
             .item-content{
                 font-family: "Lato", serif;
@@ -1267,6 +1287,11 @@ footer{
                     font-family: "Montserrat", monospace;
                     font-weight: 400;
                     font-size: 25px;
+                }
+                h6{
+                    font-family: "Montserrat", monospace;
+                    font-weight: 300;
+                    font-size: 12px;
                 }
             }
             .item-content{
@@ -2353,11 +2378,11 @@ footer{
                                // background-color: #CB9D90;
                                 //color: #5F7177;
                                 position: absolute;
-                                bottom: 30px;
-                                right: 10px;
+                                bottom: - 15px;
+                                right: -10px;
                                 z-index: 12;
-                                width: 250px;
-                                height: 80px;
+                                width: 280px;
+                                height: 130px;
                                 padding: 10px;
                                 border-radius: 20px;
                                 .qualifier-item{
@@ -2381,6 +2406,21 @@ footer{
                                     flex-direction: row;
                                     width: 200px;
                                     justify-content: space-evenly;
+                                }
+                                .set_cat{
+                                    display: flex;
+                                    flex-direction: row;
+                                    width: 260px;
+                                    flex-wrap: wrap;
+                                    justify-content: space-evenly;
+                                    a{
+                                        background-color: #5F7177;
+                                        margin: 5px;
+                                        padding: 2px;
+                                        border-radius: 10px;
+                                        color: #fff;
+                                        text-decoration: none;
+                                    }
                                 }
                                 h1{
                                     font-size: 20px;

@@ -16,12 +16,6 @@ class CreateProjectLangsTable extends Migration
         Schema::create('project_langs', function (Blueprint $table) {
             $table->id();
             $table->integer('project_id');
-            $table->boolean('php')->default(false);
-            $table->boolean('html')->default(false);
-            $table->boolean('css')->default(false);
-            $table->boolean('scss')->default(false);
-            $table->boolean('laravel')->default(false);
-            $table->boolean('wordpress')->default(false);
             $table->timestamps();
         });
     }

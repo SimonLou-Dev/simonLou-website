@@ -9,6 +9,7 @@
                     <div class="divider"></div>
                     <h2>Je suis le nom</h2>
                     <h4>Je suis la catégorie</h4>
+                    <h6>Je suis le nom du projet</h6>
                 </div>
                 <div class="item-admin">
                     <div class="item-description">

@@ -12,6 +12,11 @@ class ContentManagerController extends Controller
 {
     private $columnname;
 
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index(){
         $cattickets = tickets_category::all();
         $projectstatus = status::all();

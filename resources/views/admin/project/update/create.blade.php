@@ -15,22 +15,29 @@
     </div>
     <div id="project_create_update">
         <div class="project_create-update">
-            <form>
+            <form method="post" action="{{route('admin.project.update.post', $project->id)}}">
+                @csrf
                 <div class="form-header">
                     <h1>Ajouter une mise à jour</h1>
                 </div>
                 @csrf
                 <div class="part-form">
                     <label for="NameOfUpdate">Nom :</label>
-                    <input type="text" id="NameOfUpdate" name="name" value="V">
+                    <input type="text" id="NameOfUpdate" name="name">
+                    @error('name')
+                        <div class="form_error">
+                            <h6>Vous devez remplir ce champ</h6>
+                        </div>
+                    @enderror
                 </div>
                 <div class="part-form">
                     <label for="updatedesc">Description :</label>
                     <textarea rows="4" id="updatedesc" name="desc"></textarea>
-                </div>
-                <div class="part-form">
-                    <label for="updatecontent">Contenu :</label>
-                    <textarea rows="4" id="updatecontent" name="content" placeholder="Utilisation de l'HTML : OK"></textarea>
+                    @error('desc')
+                    <div class="form_error">
+                        <h6>Vous devez remplir ce champ</h6>
+                    </div>
+                    @enderror
                 </div>
                 <div class="part-form check">
                     <label for="advertclient">Avertir le client</label>

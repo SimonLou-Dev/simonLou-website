@@ -1,4 +1,11 @@
 <div id="index">
+    @if(Session::get('success'))
+        <div class="contact_success" role="alert">
+            Envoi réussit
+        </div>
+    @endif
+
+
     <div class="lou_header" id="index-top">
         <header class="lou_header_content">
             <img src="{{asset('assets/img/avatar.png')}}">
@@ -12,6 +19,5 @@
             </div>
             <h3 id="second_title">développeur - intégrateur web</h3>
         </header>
-
     </div>
 </div>

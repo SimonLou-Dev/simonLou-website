@@ -2,6 +2,7 @@
 
 @section('content')
 @include('incs.head')
+
     <!-- Section Portfolio-->
     <section id="portfolio">
         <div class="portfolio_div">
@@ -24,10 +25,10 @@
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{$project->main_img}}" alt="" />
+                    <img class="img-fluid" src="{{'storage/project/'.$project->id.'/'.$project->main_img}}" alt="" />
                     <div class="portfolio_info">
                         <div>
-                            <h6>{{$project->created_at}}</h6>
+                            <h6>{{date('d/m/Y', strtotime($project->created_at))}}</h6>
                             <h5>{{$project->title}}</h5>
                         </div>
                     </div>
@@ -46,8 +47,8 @@
                                     <div class="">
                                         <!-- Portfolio Modal - header-->
                                         <div class="portfolio_modal_header">
-                                            <h2 class="portfolio-modal-title">{{$project->created_at}}</h2>
-                                            <h6 class="portfolio-modal-date">{{$project->title}}</h6>
+                                            <h2 class="portfolio-modal-title">{{$project->title}}</h2>
+                                            <h6 class="portfolio-modal-date">{{date('d/m/Y', strtotime($project->created_at))}}</h6>
 
                                         </div>
                                         <!-- Icon Divider-->
@@ -100,31 +101,41 @@
                                                 </div>
                                                 <div class="pm_infos">
                                                     <div class="pm_apptype">
-                                                        <h5>Type de site : </h5>
-                                                        <p></p>
+                                                        <h5>Type de projet : </h5>
+                                                        @php
+                                                            $projecttype = App\Models\project_types::find($project->type)->first();
+                                                        @endphp
+                                                        <p>{{$projecttype->name}}</p>
                                                     </div>
                                                     <div class="pm_languages">
                                                         <h5>Languages & Framework : </h5>
                                                         <div class="LF-list">
-                                                            <div class="LF-name">PHP</div>
-                                                            <div class="LF-name">SQL</div>
-                                                            <div class="LF-name">HTML</div>
-                                                            <div class="LF-name">CSS3</div>
-                                                            <div class="LF-name">Javacript</div>
+                                                            @php
+                                                                $projectlangs = App\Models\project_lang::where('project_id', $project->id)->first();
+                                                            @endphp
+                                                            @foreach($langs as $lang)
+                                                                @if($projectlangs[$lang->name])
+                                                                    <div class="LF-name">{{$lang->name}}</div>
+                                                                @endif
+
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                     <div class="pm_update">
                                                         <h5>Version & Mise à jour : </h5>
-                                                        <h6><span>Dernière mise à jour :</span>{{}}</h6>
-                                                        <h6><span>Version :</span> V5.1.0</h6>
+                                                        @php
+                                                            $maj = App\Models\project_updates::all()->where('project_id', $project->id)->sortBy('created_at')->first();
+                                                        @endphp
+                                                        <h6><span>Dernière mise à jour :</span>{{date('d/m/Y', strtotime($maj->created_at))}}</h6>
+                                                        <h6><span>Version :</span>{{$maj->version}}</h6>
                                                     </div>
                                                     <div class="pm_avis">
                                                         <h5>Avis : </h5>
-                                                        <h6><span>Demandeur :</span> 15/05/9156</h6>
-                                                        <h6><span>Utilisateur :</span> V5.1.0</h6>
+                                                        <h6><span>Demandeur :</span> {{$project->client_rate}}</h6>
+                                                        <h6><span>Utilisateur :</span>{{$project->user_rate}}</h6>
                                                     </div>
                                                     <div class="pm_link">
-                                                        <a>Visiter le site</a>
+                                                        <a href="{{$project->link}}">Visiter le site</a>
                                                     </div>
                                                 </div>
 
@@ -139,7 +150,7 @@
                                             <!-- Portfolio Modal - Text and infos -->
                                             <div class="portfolio_modal_text_infos">
                                                 <div class="pm_text">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                                    <p>{{$project->description}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,84 +164,6 @@
 
 
             @endforeach
-            <!-- Portfolio Item 1-->
-
-
-            <!-- Portfolio Item 2-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="" />
-                    <div class="portfolio_info">
-                        <div>
-                            <h6>14/02/8154</h6>
-                            <h5>Maison dans la prairie</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 3-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="" />
-                    <div class="portfolio_info">
-                        <div>
-                            <h6>14/02/8154</h6>
-                            <h5>Maison dans la prairie</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 4-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/game.png" alt="" />
-                    <div class="portfolio_info">
-                        <div>
-                            <h6>14/02/8154</h6>
-                            <h5>Maison dans la prairie</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 5-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="" />
-                    <div class="portfolio_info">
-                        <div>
-                            <h6>14/02/8154</h6>
-                            <h5>Maison dans la prairie</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 6-->
-            <div class="col-md-6 col-lg-4">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="" />
-                    <div class="portfolio_info">
-                        <div>
-                            <h6>14/02/8154</h6>
-                            <h5>Maison dans la prairie</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
         </div>
@@ -252,34 +185,36 @@
                         <h1>Capacités</h1>
                     </div>
                     <div id="ab-content">
+
                         <section id="ab-Framework">
                             <h2>Framework :</h2>
+
                             <section class="ab-FLT-content">
-                                <div class="fmw-item">Laravel</div>
-                                <div class="fmw-item">Wordpress</div>
+                                @foreach($langs as $lang)
+                                    @if($lang->category == "Framework")
+                                        <div class="fmw-item">{{$lang->name}}</div>
+                                    @endif
+                                @endforeach
                             </section>
                         </section>
                         <section id="ab-lang">
                             <h2>Languages :</h2>
                             <section class="ab-FLT-content">
-                                <div class="lang-item">(X)HTML</div>
-                                <div class="lang-item">CSS3</div>
-                                <div class="lang-item">PHP</div>
-                                <div class="lang-item">SQL</div>
-                                <div class="lang-item">MySQL</div>
-                                <div class="lang-item">LESS</div>
-                                <div class="lang-item">BLADE</div>
-                                <div class="lang-item">JSON</div>
-                                <div class="lang-item">Javascript</div>
+                                @foreach($langs as $lang)
+                                    @if($lang->category == "Language")
+                                        <div class="lang-item">{{$lang->name}}</div>
+                                    @endif
+                                @endforeach
                             </section>
                         </section>
                         <section id="ab-tech">
                             <h2>Technologies :</h2>
                             <section class="ab-FLT-content">
-                                <div class="tech-item">JQuerry</div>
-                                <div class="tech-item">SASS</div>
-                                <div class="tech-item">SCSS</div>
-                                <div class="tech-item">POO</div>
+                                @foreach($langs as $lang)
+                                    @if($lang->category == "Technologie")
+                                        <div class="tech-item">{{$lang->name}}</div>
+                                    @endif
+                                @endforeach
                             </section>
                         </section>
                     </div>
@@ -409,18 +344,19 @@
         </div>
         <div class="contact_content">
             <div class="contact_form">
-                <form>
+                <form method="post" action="{{route('contact')}}">
+                    @csrf
                     <div class="form-part">
                         <label>Nom :</label>
-                        <input class="from-input" type="text">
+                        <input class="from-input" type="text" name="nom" required>
                     </div>
                     <div class="form-part">
                         <label>Email :</label>
-                        <input class="from-input" type="text">
+                        <input class="from-input" type="text" name="email" required>
                     </div>
                     <div class="form-part">
                         <label>Message :</label>
-                        <textarea class="from-input" rows="4"></textarea>
+                        <textarea class="from-input" rows="4" name="message" required></textarea>
                     </div>
                     <button type="submit" class="from-btn">Envoyer</button>
                 </form>

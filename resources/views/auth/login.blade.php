@@ -31,7 +31,7 @@
                         <button type="submit" class="btn form-submit">
                             Connexion
                         </button>
-                        <a href="{{route('login')}}" class="form-redirect">Mot de passe perdu</a>
+                        <a href="{{ route('password.request') }}" class="form-redirect">Mot de passe perdu</a>
                     </div>
                 </form>
             </div>

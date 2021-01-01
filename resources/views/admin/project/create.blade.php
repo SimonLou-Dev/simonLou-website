@@ -66,10 +66,6 @@
                 </div>
                 <div class="checkbox">
                     <div class="line">
-                        <label for="gitrepo">Create Git repo</label>
-                        <input id="gitrepo" type="checkbox" name="create_gitrepo">
-                    </div>
-                    <div class="line">
                         <label for="ispublic">Public</label>
                         <input id="ispublic" type="checkbox" name="ispublic">
                     </div>

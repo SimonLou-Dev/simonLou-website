@@ -17,7 +17,7 @@ class MainController extends Controller
     public function main(){
         $projects = DB::table('projects')
                     ->where('ispublic',1)
-                    ->where('status',2)
+                    ->where('status',1)
                     ->get();
         $lang = lang::all();
         return view('welcome', ['projects'=>$projects, 'langs'=>$lang]);

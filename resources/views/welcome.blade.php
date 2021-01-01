@@ -21,7 +21,7 @@
 
             @foreach($projects as $project)
                 <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal{{$project->id}}">
                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
                 <!-- Portfolio Modal -->
-                <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+                <div class="portfolio-modal modal fade" id="portfolioModal{{$project->id}}" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -63,32 +63,39 @@
                                             <section class="portfolio-modal-rowed">
                                                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                                                     <ol class="carousel-indicators">
+                                                        @php
+                                                            $nbrofimg = \App\Models\project_images::all()->where('project_id', $project->id)->count();
+                                                            if($nbrofimg > 0){
+                                                                $imgs = \App\Models\project_images::all()->where('project_id', $project->id);
+                                                            }
+                                                        @endphp
                                                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                                                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                                        @if($nbrofimg > 0)
+                                                            @foreach($imgs as $img)
+                                                                <li data-target="#carouselExampleCaptions" data-slide-to="1" class="active"></li>
+                                                            @endforeach
+                                                        @endif
                                                     </ol>
                                                     <div class="carousel-inner">
+
                                                         <div class="carousel-item active">
-                                                            <img src="assets/img/portfolio/cabin.png" class="d-block w-100" alt="...">
+                                                            <img src="{{'storage/project/'.$project->id.'/'.$project->main_img}}" class="d-block w-100" alt="...">
                                                             <div class="carousel-caption d-none d-md-block">
-                                                                <h5>First slide label</h5>
-                                                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                                <h5>{{$project->title}}</h5>
+                                                                <p>Image d'illustration du projet</p>
                                                             </div>
                                                         </div>
-                                                        <div class="carousel-item">
-                                                            <img src="assets/img/portfolio/cabin.png" class="d-block w-100" alt="...">
-                                                            <div class="carousel-caption d-none d-md-block">
-                                                                <h5>Second slide label</h5>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="assets/img/portfolio/cabin.png" class="d-block w-100" alt="...">
-                                                            <div class="carousel-caption d-none d-md-block">
-                                                                <h5>Third slide label</h5>
-                                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                                            </div>
-                                                        </div>
+                                                        @if($nbrofimg > 0)
+                                                            @foreach($imgs as $img)
+                                                                <div class="carousel-item">
+                                                                    <img src="{{'storage/project/'.$project->id.'/'.$img->path}}" class="d-block w-100" alt="...">
+                                                                    <div class="carousel-caption d-none d-md-block">
+                                                                        <h5>{{$img->title}}</h5>
+                                                                        <p>{{$img->description}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -124,10 +131,20 @@
                                                     <div class="pm_update">
                                                         <h5>Version & Mise à jour : </h5>
                                                         @php
-                                                            $maj = App\Models\project_updates::all()->where('project_id', $project->id)->sortBy('created_at')->first();
+                                                            $majcount = App\Models\project_updates::all()->where('project_id', $project->id)->count();
                                                         @endphp
-                                                        <h6><span>Dernière mise à jour :</span>{{date('d/m/Y', strtotime($maj->created_at))}}</h6>
-                                                        <h6><span>Version :</span>{{$maj->version}}</h6>
+                                                        @if($majcount == 0 )
+                                                            <h6><span>Dernière mise à jour :</span> V1.0</h6>
+                                                            <h6><span>Version :</span>{{$project->created_at}}</h6>
+                                                        @else
+                                                            @php
+                                                                $maj = App\Models\project_updates::all()->where('project_id', $project->id)->sortBy('created_at')->first();
+                                                            @endphp
+                                                            <h6><span>Dernière mise à jour :</span>{{date('d/m/Y', strtotime($maj->created_at))}}</h6>
+                                                            <h6><span>Version :</span>{{$maj->version}}</h6>
+                                                        @endif
+
+
                                                     </div>
                                                     <div class="pm_avis">
                                                         <h5>Avis : </h5>
@@ -229,9 +246,9 @@
                             <img src="{{asset('assets/img/avatar.png')}}">
                         </div>
                         <p class="etudes"><span>Etudes :</span> Lycéen (voie générale)</p>
-                        <p class="text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus interdum sapien sem, eu malesuada velit aliquet eu. Mauris placerat neque eget gravida interdum. Cras nunc velit, fringilla a luctus quis, accumsan pulvinar purus. Curabitur in eros ac turpis auctor tincidunt a eu nisl. Vestibulum aliquet laoreet enim hendrerit cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam a ex massa. Phasellus vel mi commodo, viverra tellus vitae, varius lorem. <br></p>
-
-                        <p class="text"> In vel odio non nisi pretium pretium. Mauris eget magna pretium, blandit orci vel, condimentum neque. Praesent nulla neque, tempus quis tortor id, fringilla molestie quam. Mauris congue aliquam purus, vel congue odio pretium ut. Suspendisse lobortis nunc eu ligula interdum imperdiet. Nam egestas dignissim sagittis. Etiam quam orci, ornare sed tincidunt et, viverra ut libero. </p>
+                        <p class="text"> Je suis passionné depuis longtemps à l'informatique. C'est avec plaisir que je mets mes compétences au service des autres. Je me suis spécialisé dans le web après une  découverte de chaque discipline du développement. <br></p>
+                        <p class="text"> Mon expérience acquise au fil des projets me permet de mieux comprendre les attentes d'un client et de répondre précisement au besoin demandé en fonction du domaine d'activité.<br></p>
+                        <p class="text">Du site vitrine au projet plus complexe, je vous propose une expertise et un développement web qui correspond à vos attentes & à vos besoins. </p>
 
                     </div>
                 </div>
@@ -256,7 +273,7 @@
                 <div class=serv_item-separator></div>
                 <div class="services_item-content">
                     <h1>Hébergement</h1>
-                    <p>Cur nuclear vexatum iacere resistere?Mineraliss peregrinationes in ostravia!Bromium ridetiss, tanquam magnum pars.</p>
+                    <p>Mise en place d'une solution d'hébergement adapté à vos besoins</p>
                     <ul>
                         <li>Serveurs dédiées</li>
                         <li>Serveurs dans le cloud</li>
@@ -270,7 +287,7 @@
                 <div class=serv_item-separator></div>
                 <div class="services_item-content">
                     <h1>Maintenance</h1>
-                    <p>Cur nuclear vexatum iacere resistere?Mineraliss peregrinationes in ostravia!Bromium ridetiss, tanquam magnum pars.</p>
+                    <p>Maintenance des sites, mises à jour de contenu, ajout de fonctionnalité, correction de bug, modification d'infrastructure</p>
                     <ul>
                         <li>Correction du bug</li>
                         <li>Maintenance WordPress</li>
@@ -286,7 +303,7 @@
                 <div class=serv_item-separator></div>
                 <div class="services_item-content">
                     <h1>Référencement & positionnement (SEO)</h1>
-                    <p>Cur nuclear vexatum iacere resistere?Mineraliss peregrinationes in ostravia!Bromium ridetiss, tanquam magnum pars.</p>
+                    <p>Mise en place d'un référencement et d'un positionnement adpté à vos besoins dans les résultats des moteurs de recherche.</p>
                     <ul>
                         <li>Temps de chargement des pages optimisés</li>
                         <li>Indexation automatique des pages</li>
@@ -304,7 +321,7 @@
 
                 <div class="services_item-content">
                     <h1>Web design</h1>
-                    <p>Cur nuclear vexatum iacere resistere?Mineraliss peregrinationes in ostravia!Bromium ridetiss, tanquam magnum pars.</p>
+                    <p>Design de tous types de site web adapté à tous les supports et à vos besoins</p>
                     <ul>
                         <li>Design de site internet</li>
                         <li>Mise en page de contenu</li>
@@ -318,7 +335,7 @@
                 <div class=serv_item-separator></div>
                 <div class="services_item-content">
                     <h1>Développement de site web</h1>
-                    <p>Cur nuclear vexatum iacere resistere?Mineraliss peregrinationes in ostravia!Bromium ridetiss, tanquam magnum pars.</p>
+                    <p>Développement d'un site web adapté à vos besoins et votre budget pour tout support</p>
                     <ul>
                         <li>Site sur mesures</li>
                         <li>Site vitrine</li>

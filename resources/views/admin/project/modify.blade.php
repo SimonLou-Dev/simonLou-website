@@ -46,14 +46,19 @@
                     <textarea id="hostedinfos" name="hostedinfos" required>{{$project->hosted_infos}}</textarea>
                 </div>
                 <div class="part-form">
-                    <label for="img">Image</label>
-                    <input id="img" name="img" type="file">
+                    <label for="client_rate">Note Client</label>
+                    <input id="client_rate" name="client_rate" required value="{{$project->client_rate}}" type="number">
                 </div>
+                <div class="part-form">
+                    <label for="user_rate">Note Utilisateur</label>
+                    <input id="user_rate" name="user_rate" required value="{{$project->user_rate}}" type="number">
+                </div>
+
                 <div class="part-form">
                     <label for="projecttype">Project Type</label>
                     <select id="projecttype" name="projecttype" required>
                         @foreach($types as $type)
-                            @if($type->id == $project->type)
+                            @if($project->type == $type->id)
                                 <option value="{{$type->id}}" selected>{{$type->name}}</option>
                             @else
                                 <option value="{{$type->id}}">{{$type->name}}</option>
@@ -75,13 +80,9 @@
                 </div>
                 <div class="part-form">
                     <label for="languages">Languages</label>
-                    @php
-
-                    @endphp
                     <select multiple id="languages" name="languages[]" required>
-
                         @foreach($langs as $lang)
-                            @if($projectlangs[$lang->name])
+                            @if($project->project_lang[$lang->name])
                                 <option selected value="{{$lang->id}}">{{$lang->name}}</option>
                             @else
                                 <option value="{{$lang->id}}">{{$lang->name}}</option>
@@ -111,6 +112,39 @@
                 <button type="submit">Valider</button>
             </form>
         </div>
+        <div class="add_project_images">
+            <div class="images">
+                @foreach($imgs as $img)
+                    <div class="img">
+                        <img src="{{'../../../storage/project/'.$project->id.'/'.$img->path}}" alt="">
+                        <h5>{{$img->title}}</h5>
+                        <div class="btn">
+                            <a href="{{route('admin.project.remove.picture', $img->id)}}">Supprimer</a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="form">
+                <form method="post" enctype="multipart/form-data" action="{{route('admin.project.add.picture', $project->id)}}">
+                    @csrf
+                    <div class="part-form">
+                        <label>Fichier</label>
+                        <input type="file" name="img" required>
+                    </div>
+                    <div class="part-form">
+                        <label>Titre</label>
+                        <input type="text" name="title" required>
+                    </div>
+
+                    <div class="part-form">
+                        <label>Description</label>
+                        <textarea rows="2" name="text" required></textarea>
+                    </div>
+                    <button type="submit">Valider</button>
+                </form>
+            </div>
+        </div>
     </div>
+
 
 @endsection

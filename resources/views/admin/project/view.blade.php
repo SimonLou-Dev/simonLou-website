@@ -54,6 +54,27 @@
                         </p>
                     </div>
                 </div>
+                <div class="project-card">
+                    <div class="project-card_header">
+                        <h2>Description du projet</h2>
+                    </div>
+                    <div class="project-card_content projectstatus">
+                        <form method="post" action="{{route('admin.project.setstatus', $project->id)}}">
+                            @csrf
+                            @method('put')
+                            <select name="status">
+                                @foreach($statuses as $status)
+                                    @if($status->id == $project->status)
+                                        <option selected value="{{$status->id}}">{{$status->name}}</option>
+                                    @else
+                                        <option value="{{$status->id}}">{{$status->name}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <button type="submit">Valider</button>
+                        </form>
+                    </div>
+                </div>
             </section>
             <section class="maj">
                 <div class="maj-list">

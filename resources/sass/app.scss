@@ -17,6 +17,7 @@ $cream_white: #f7fafc;
 // Body
 body{
   width: 100%;
+    min-height: 100vh;
 }
 
 .contact_success{
@@ -1041,13 +1042,13 @@ footer{
     }
 }
 #list-of-project{
-  width: 100%;
-  display: flex;
-
+    width: 100%;
+    display: flex;
   .project-content{
-
     max-width: 1500px;
+
     margin: auto;
+    min-height: calc(100vh - 60px);
     .items{
       width: fit-content;
       display: flex;
@@ -1154,6 +1155,7 @@ footer{
 #list-of-tickets{
     width: 100%;
     display: flex;
+    min-height: 100vh;
     .tickets-content {
         max-width: 1500px;
         margin: auto;
@@ -1252,10 +1254,13 @@ footer{
 // Page of Ticket Chat (admin & client)
 #ticket-chat{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
+    margin-bottom: 20px;
     #chat-content{
+
         max-width: 1500px;
+        //min-width: 1000px;
         margin: auto;
         background-color: #e6e6e6;
         border: 3px #e25f34 solid;
@@ -1266,13 +1271,18 @@ footer{
         flex-wrap: wrap;
         justify-content: space-between;
         .informations{
-            display: flex;
-            flex-direction: column;
             justify-content: space-between;
             padding: 15px;
+            width: 100%;
             @media (min-width: 900px) {
                 max-width: 49%;
                 border-right: #e25f34 2px solid;
+                display: flex;
+                flex-direction: column;
+            }
+            @media (max-width: 900px) {
+                width: 100%;
+                height: fit-content;
             }
             .item-header{
                 .divider{
@@ -1291,7 +1301,7 @@ footer{
                 h6{
                     font-family: "Montserrat", monospace;
                     font-weight: 300;
-                    font-size: 12px;
+                    //font-size: 17px;
                 }
             }
             .item-content{
@@ -1300,7 +1310,7 @@ footer{
                 font-size: 20px;
                 text-indent: 15px;
                 margin: 20px 0;
-                min-height: 50%;
+                height: max-content;
             }
             .item-admin{
                 font-family: "Lato", serif;
@@ -1391,6 +1401,7 @@ footer{
                 border: 10px solid;
                 border-image-slice: 1;
                 border-width: 3px;
+
                 border-image-source: linear-gradient(270deg, rgba(237,152,14,1) 0%, rgba(255,89,0,1) 100%);
 
                 form{
@@ -1433,7 +1444,7 @@ footer{
                 }
 
                 .chat-msg{
-                    max-height: 500px;
+                    height: 500px;
                     overflow-y: scroll;
                     overflow-x: hidden;
                     display: flex;
@@ -1498,7 +1509,8 @@ footer{
         height: 100%;
         display: flex;
         .project_content_bordered{
-            max-width: 1500px;
+            min-width: 60vw;
+            max-width: 1500px !important;
             margin: auto;
             border: double 4px transparent;
             border-radius: 80px;
@@ -1886,12 +1898,11 @@ footer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 20px 20px;
     section{
         width: 30%;
         height: 100%;
-        min-height: 100vh;
         min-width: 300px;
         display: flex;
         .admin_card{
@@ -1923,7 +1934,7 @@ footer{
                     flex-wrap: nowrap;
                     justify-content: space-between;
                     border-bottom: $violet_dark 1px solid;
-                    padding: 10px 7px;
+                    padding: 10px 15px;
                     line-height: 30px;
                     &:last-child{
                         border-bottom: none;
@@ -1938,18 +1949,22 @@ footer{
 
     }
     .divers_infos{
+        display: flex;
         flex-direction: column !important;
         justify-content: space-evenly;
-        display: flex;
+        min-height: 700px !important;
         .admin-popup{
+            margin: 0 auto;
             border-radius: 15px;
             border: $violet_dark 3px solid;
             background-color: #f7fafc;
-            max-width: 300px;
+            width: 250px;
             p{
+                text-align: center;
                 margin: auto auto;
                 padding: 5px;
                 line-height: 40px;
+                height: 50px;
                 font-family: "Lato", serif;
                 font-size: 20px;
                 span{
@@ -2150,6 +2165,26 @@ footer{
                         span{
                             text-transform: capitalize;
                             text-decoration: black underline;
+                        }
+                    }
+                    form{
+                        padding: 2px;
+                        display: flex;
+                        flex-direction: row;
+                        select{
+                            width: 75%;
+                            background-color: #A0A5A6;
+                            border: 1px black solid;
+                            border-radius: 5px;
+                            margin-right: 7px;
+                        }
+                        button{
+                            background-color: #A0A5A6;
+                            box-shadow: none;
+                            border: 1px black solid;
+                            font-family: "Montserrat", monospace;
+                            font-weight: 600;
+                            border-radius: 30px;
                         }
                     }
                 }
@@ -2474,6 +2509,8 @@ footer{
     overflow-y: hidden;
     overflow-x: hidden;
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     .project_create-update{
         border: 2px $violet_light solid;
         padding: 10px;
@@ -2644,6 +2681,98 @@ footer{
     overflow-y: hidden;
     overflow-x: hidden;
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    .add_project_images{
+        background-color: #DFCAC9;
+        border: 2px $violet_light solid;
+        padding: 10px;
+        border-radius: 30px;
+        margin: auto;
+        width: 500px;
+        height: 700px;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        .images{
+            display: flex;
+            flex-direction: column;
+            height: 520px;
+            padding: 10px 10px;
+            border: 1px $violet_light solid;
+            .img{
+                height: 70px;
+                background-color: $cream_white;
+                border: 1px $violet_light solid;
+                border-radius: 20px;
+                margin: 5px 0;
+                padding: 10px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                img{
+                    height: 50px;
+                }
+                h5{
+                    margin-left: 5px;
+                    font-family: "Montserrat", monospace;
+                    font-weight: 500;
+                    line-height: 50px;
+                }
+                .btn{
+                    a{
+                        background-color: #5F7177;
+                        border: 1px solid #5F7177;
+                        color: $violet_dark;
+                        font-family: "Montserrat", monospace;
+                        font-weight: 600;
+                        transition: all 400ms;
+                        padding: 5px;
+                        border-radius: 10px;
+                        &:hover{
+                            background-color: $cream_white;
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+            }
+        }
+        .form form{
+            display: flex;
+            flex-direction: column;
+            button{
+                background-color: #A0A5A6;
+                border: 1px $violet_light solid;
+                border-radius: 30px;
+                font-family: "Montserrat", monospace;
+                font-size: 17px;
+                font-weight: 600;
+                padding: 3px;
+                margin-top: 10px;
+                text-align: right;
+                width: fit-content;
+            }
+            .part-form{
+                display: flex;
+                flex-direction: column;
+                label{
+                    font-family: "Lato", serif;
+                    font-size: 20px;
+                }
+                input, textarea, select{
+                    background-color: #5F7177;
+                    font-family: "Lato", serif;
+                    font-size: 18px;
+                    border-radius: 20px;
+                    padding: 5px;
+                    box-shadow: none;
+                    border: 1px $violet_light solid
+                }
+            }
+        }
+    }
     .modify_project{
         background-color: #DFCAC9;
         border: 2px $violet_light solid;
@@ -2810,293 +2939,16 @@ footer{
     }
 }
 
-//Admin - mail - mail || DELET
-/*
-#admin-mail{
-    height: 100vh;
-    width: calc(100vw - 250px);
-    .bg{
-        background-image: url("../assets/img/wolf.jpg");
-    }
-    .bg2{
-        background-image: url("../assets/img/wolf2.jpg");
-    }
-    .admin-mail-bg{
-        position: absolute;
-        height: 100vh;
-        width: calc(100vw - 250px);
-        overflow: hidden;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        filter: blur(3px);
-        -webkit-filter: blur(3px);
-        z-index: 0;
-    }
-
-    .admin-mail{
-        position: relative;
-        z-index: 1;
-        filter: none !important;
-        -webkit-filter: none !important;
-        background-color: transparent;
-        .mail-new{
-            width: 600px;
-            height: 600px;
-            bottom: 0;
-            background-color: $violet_light;
-            border-top: 2px solid $violet_dark;
-            border-right: 2px solid $violet_dark;
-            position: fixed;
-            z-index: 3;
-            border-radius: 0 50px 0 0;
-            form{
-                padding-top: 30px;
-                width: 100%;
-                height: calc(600px - 50px);
-                .mail-header{
-                    height: 120px;
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    .head_part{
-                        width: 90%;
-                        padding: 10px;
-                        margin: 0 auto;
-                        border-bottom: 2px solid $violet_dark;
-                        input{
-                            font-family: "Montserrat", monospace;
-                            font-size: 20px;
-                            font-weight: 700;
-                        }
-                    }
-                }
-                .mail-text{
-                    width: 100%;
-                    height: max-content;
-                    textarea{
-                        padding: 15px;
-                        font-family: "Lato", serif;
-                        font-size: 18px;
-                        width: 100%;
-                        height: 390px;
-                        overflow-y: visible;
-                    }
-                }
-            }
-            input, textarea{
-                background-color: $violet_light;
-                box-shadow: none;
-                border: none;
-            }
-            .mail-content{
-                width: 100%;
-                height: 100%;
-                overflow-y: hidden;
-            }
-            .mail-footer{
-                position: absolute;
-                bottom: 0px;
-                width: 100%;
-                height: 50px;
-                background-color: $violet_dark;
-            }
-        }
-        .mail-head{
-            display: flex;
-            flex-direction: row-reverse;
-            width: 100%;
-            height: 50px;
-            nav{
-                background-color: $violet_dark;
-                border-radius: 30px 0 0 30px;
-                width: 70%;
-                display: flex;
-                ul{
-                    margin: auto auto;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    width: 100%;
-                    height: 100%;
-                    padding: 0 15px;
-                    list-style: none;
-                    li{
-                        height: 100%;
-                        display: flex;
-                        a{
-                            margin: 6px 0;
-                            height: 100%;
-                            color: #fff;
-                            font-family: "Lato", serif;
-                            font-weight: 800;
-                            font-size: 20px;
-                            text-transform: capitalize;
-                        }
-                        .start{
-                            color: orange;
-                        }
-                    }
-                }
-            }
-            .text{
-                width: 30%;
-                display: flex;
-                h2{
-                    margin: auto auto;
-                    text-align: center;
-                    font-family: "Montserrat", monospace;
-                    font-weight: 700;
-                    font-size: 40px;
-                    color: #fff;
-                }
-            }
-        }
-        // Mail - index - box
-        .mail-box{
-            margin-top: 30px;
-            padding: 5px 0 0 0;
-            width: calc(100vw - 250px);
-            height: calc(100vh - 50px);
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            background-color: rgba(0,0,0,0.3);
-            .mail-header{
-                height: 40px;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                .mail-selected-infos{
-                    padding-left: 25px;
-                    width: 150px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-
-                    button{
-                        background-color: transparent;
-                        border: none;
-                        box-shadow: none;
-                        transition: all 400ms;
-                        img{
-                            max-width: 30px;
-                            max-height: 30px;
-                        }
-                        &:hover{
-                            transform: scale(1.2);
-                        }
-                    }
-                    .more_infos{
-                        transform: rotate(90deg);
-                    }
-                    .check{
-                        display: block;
-                    }
-                }
-                .pagination{
-                    display: flex;
-                    flex-direction: row;
-                    padding-right: 17px;
-                    a{
-                        width: 100%;
-                    }
-                    img{
-                        width: 100%;
-                    }
-                    a img{
-                        max-width: 30px;
-                        max-height: 30px;
-                    }
-                    a:first-child{
-                        img{
-                            transform: rotate(180deg);
-                        }
-                    }
-                    p{
-                        margin: 0px 2px 12px 2px;
-                        font-size: 22px;
-                        font-family: "Lato", monospace;
-                        color: rgba(255,255,255,0.7);
-                    }
-                }
-            }
-
-            .mail{
-                transition: all 400ms;
-                background-color: rgba(0, 0, 0, 0.5);
-                border-bottom: $cream_white 1px solid;
-                padding: 2px;
-                $mail_font_size: 22px;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                .action{
-                    width: calc(100vw / 6);
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-evenly;
-                    z-index: 10;
-                    button{
-                        z-index: 100;
-                        background: transparent;
-                        border: none;
-                    }
-                }
-                .sender{
-                    width: calc(100vw / 6*2);
-                    h2{
-                        font-family: "Montserrat", monospace;
-                        font-weight: 800;
-                    }
-
-                }
-                .object{
-                    max-width: calc((100vw / 6*3) - 20px);
-                    width: calc((100vw / 6*3) - 20px);
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: clip;
-                    margin-right: 20px;
-                }
-                .date{
-                    width: calc(100vw / 6*2);
-
-                }
-                .mail-content{
-                    h2{
-                        font-size: $mail_font_size;
-                        color: $cream_white;
-                    }
-                }
-                &:hover{
-                    background-color: rgba(39, 39, 48, 0.8);
-                }
-
-
-
-            }
-            .new{
-                background-color: rgba(0,0,0,0.95);
-            }
-            .selected{
-                background-color: rgba(0, 42, 188, 0.55);
-            }
-        }
-    }
-}
-*/
-
 // Admin - user contact
 #user-contact{
-    height: calc(100vh - 70px);
+    height: 100vh;
     width: calc(100vw - 250px);
-    overflow-y: scroll;
     overflow-x: hidden;
     display: flex;
     .user-contact{
         width: 100%;
         height: 100%;
+        overflow-y: scroll;
         padding: 10px;
         display: flex;
         flex-direction: row;
@@ -3104,12 +2956,10 @@ footer{
         flex-wrap: wrap;
         .contact-card{
             width: 400px;
-            max-height: 500px;
-            overflow-y: auto;
+            height: 300px;
+            overflow-y: scroll;
             overflow-x: hidden;
             margin: 10px;
-            display: flex;
-            flex-direction: column;
             border: $violet_dark 1px solid;
             border-radius: 30px;
             .contact-card_header{
@@ -3126,18 +2976,43 @@ footer{
                     font-size: 18px;
                 }
             }
-            .separator{
-                margin: 5px auto;
-                height: 2px;
-                width: 70%;
-                background-color: $violet_dark;
-            }
+
             .contact-card_content{
                 padding: 5px;
                 p{
                     text-indent: 15px;
                     font-family: Lato, serif;
                 }
+            }
+            .contact-card_footer{
+                padding: 5px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                a{
+                    background-color: $orange;
+                    border-radius: 30px;
+                    font-family: "Montserrat", monospace;
+                    font-weight: 600;
+                    font-size: 18px;
+                    padding: 7px;
+                    color: #fff;
+                    border: $orange 1px solid;
+                    transition: all 400ms;
+                    margin: 5px;
+                    &:hover{
+                        background-color: $cream_white;
+                        color: $orange;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .separator{
+                margin: 5px auto;
+                height: 2px;
+                width: 70%;
+                background-color: $violet_dark !important;
+                content: '&nbsp;';
             }
         }
     }

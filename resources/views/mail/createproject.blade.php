@@ -59,7 +59,7 @@
 <body>
     <div class="content">
         <header>
-            <h2>Bonjour Claude</h2>
+            <h2>Bonjour {{$user->name}}</h2>
             <h3>Nous vous informons que votre projet viens d'être confirmé !!</h3>
         </header>
 

@@ -56,6 +56,31 @@
             </section>
             <section class="manager">
                 <div class="header">
+                    <h1>Types de projet</h1>
+                </div>
+                <div class="add">
+                    <h2>Ajouter</h2>
+                    <form method="post" action="{{route('admin.management.content.projecttype.add')}}">
+                        @csrf
+                        <input type="text" name="new_project_type">
+                        <button type="submit">Valider</button>
+                    </form>
+                </div>
+                <div class="delet">
+                    <h2>Supprimer</h2>
+                    <form method="post" action="{{route('admin.management.content.projecttype.delete')}}">
+                        @csrf
+                        <select name="delet_project_type">
+                            @foreach($projecttypes as $type)
+                                <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit">Valider</button>
+                    </form>
+                </div>
+            </section>
+            <section class="manager">
+                <div class="header">
                     <h1>Liste des languages</h1>
                 </div>
                 <div class="add">

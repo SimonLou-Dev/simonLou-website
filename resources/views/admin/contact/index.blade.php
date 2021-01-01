@@ -3,86 +3,25 @@
 @section('content')
     <div id="user-contact">
         <div class="user-contact">
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
+            @foreach($contacts as $contact)
+                <div class="contact-card">
+                    <div class="contact-card_header">
+                        <h2 class="name">{{$contact->name}}</h2>
+                        <h2 class="mail">{{$contact->email}}</h2>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="contact-card_content">
+                        <p>{{$contact->content}}</p>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="contact-card_footer">
+                        @if(!$contact->read)
+                            <a href="{{route('admin.contact.read', $contact->id)}}">Marquer comme lu</a>
+                        @endif
+                        <a href="{{route('admin.contact.delete', $contact->id)}}">Suprimmer</a>
+                    </div>
                 </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card_header">
-                    <h2 class="name">Jean Eude Malodou</h2>
-                    <h2 class="mail">jean-eaude.malodou@entreprise.fr</h2>
-                </div>
-                <div class="separator"></div>
-                <div class="contact-card_content">
-                    <p>Fluctui persuaderes, tanquam altus coordinatae. Cur fides prarere? Heu. Cum urbs mori, omnes galluses amor fortis, azureus clabularees. Vae.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

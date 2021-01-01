@@ -3,25 +3,23 @@
 @section('content')
     <div id="ticket-creation">
         <div class="creation-content">
-            <form>
+            <form method="post" action="{{route('client.ticket.add', $projectid)}}">
                 @csrf
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Object</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" required>
+                    <input type="text" class="form-control" name="object" id="exampleFormControlInput1" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Catégorie</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <select class="form-control" name="cat" id="exampleFormControlSelect1">
+                        @foreach($cats as $cat)
+                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" required></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Valider</button>
             </form>

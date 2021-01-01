@@ -20,6 +20,7 @@ class CreateProjectEchangesTable extends Migration
             $table->boolean('closed')->default(false);
             $table->string('description');
             $table->integer('category_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

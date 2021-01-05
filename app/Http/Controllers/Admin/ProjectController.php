@@ -129,7 +129,7 @@ class ProjectController extends Controller
             $prog = lang::where('id', $lang)->first();
             $sql = $sql . ', '. $prog->name;
         }
-        $sql = $sql . ') VALUES ('. 1;
+        $sql = $sql . ') VALUES ('. $id;
         foreach ($langs as $lang){
             $sql = $sql . ', true';
         }
@@ -182,7 +182,9 @@ class ProjectController extends Controller
         $project->title = $request->input('projectname');
         $project->description = $request->input('projectdesc');
         $project->type = $request->input('projecttype');
-        $project->ispublic = $request->exists('ispublic');
+        if($project->ispublic != $request->exists('ispublic')){
+            $project->ispublic = $request->exists('ispublic');
+        }
         $project->status = $request->input('startstatus');
         $project->link = $request->input('domain');
         $project->hostedby = $request->input('hoster');

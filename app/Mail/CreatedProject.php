@@ -46,6 +46,6 @@ class CreatedProject extends Mailable
                         'user'=>$this->user,
                         'project'=>$this->project,
                         'password'=>$this->password,
-                    ]);
+                    ])->subject('Enregistrement de votre projet');
     }
 }

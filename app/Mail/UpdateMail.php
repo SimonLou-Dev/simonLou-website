@@ -47,6 +47,6 @@ class UpdateMail extends Mailable
                 'user'=>$this->user,
                 'project'=>$this->project,
                 'maj'=> $this->update,
-            ]);
+            ])->subject('Nouvelle mise à jour');
     }
 }

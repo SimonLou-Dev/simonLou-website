@@ -89,8 +89,6 @@ class ProjectController extends Controller
 
 
         if($user === null){
-
-
             $user = new User();
             $user->name = $request->input('clientname');
             $user->email = $request->input('clientmail');
@@ -98,7 +96,7 @@ class ProjectController extends Controller
             $user->grade = 2;
             $user->save();
             $user->markEmailAsVerified();
-            $project->client_id = User::where('email', $user->email)->first();
+            $project->client_id = User::where('email', $user->email)->first()->id;
             $createdaccount = true;
 
         }else{
@@ -106,10 +104,6 @@ class ProjectController extends Controller
             $user->grade = 2;
             $user->update();
         }
-
-
-
-
 
         $project->description = $request->input('projectdesc');
         $project->type = $request->input('projecttype');

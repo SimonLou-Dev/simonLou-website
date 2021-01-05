@@ -14,6 +14,11 @@ use Illuminate\Support\Str;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('ifcomustverified');
+    }
+
     public function main(){
         $projects = DB::table('projects')
                     ->where('ispublic',1)

@@ -6,6 +6,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\ClientMiddleware;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\IfConnectedvirfied;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
@@ -87,5 +88,6 @@ class Kernel extends HttpKernel
         'verified' => EnsureEmailIsVerified::class,
         'admin' => AdminMiddleware::class,
         'client' => ClientMiddleware::class,
+        'ifcomustverified' => IfConnectedvirfied::class
     ];
 }

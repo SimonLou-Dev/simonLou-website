@@ -119,6 +119,7 @@
                                                         <div class="LF-list">
                                                             @php
                                                                 $projectlangs = App\Models\project_lang::where('project_id', $project->id)->first();
+                                                                dd($projectlangs);
                                                             @endphp
                                                             @foreach($langs as $lang)
                                                                 @if($projectlangs[$lang->name])

@@ -70,7 +70,7 @@ class ContentManagerController extends Controller
         $lang->save();
         $this->columnname = $request->input('new_lang');
         Schema::table('project_langs', function ($table){
-            $table->boolean($this->columnname);
+            $table->boolean($this->columnname)->default(false);
         });
         return redirect()->route('admin.management.content');
     }

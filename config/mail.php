@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', ''), //tls
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => "mail.simon-lou.com",
+            'port' => 26,
+            'encryption' => "", //tls
+            'username' => "no-reply@simon-lou.com",
+            'password' => "aBFhA49gNFqBzy8",
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'nous@simon-lou.com'),
-        'name' => env('MAIL_FROM_NAME', 'aze'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@simon-lou.com'),
+        'name' => env('MAIL_FROM_NAME', 'Simon Lou - Ne pas répondre'),
     ],
 
     /*

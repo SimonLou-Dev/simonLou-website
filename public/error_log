@@ -1,0 +1,5 @@
+[01-Jan-2021 18:41:12 UTC] PHP Warning:  require(/home/losi2549/public_html/simon-lou/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/losi2549/public_html/simon-lou/public/index.php on line 34
+[01-Jan-2021 18:41:12 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/losi2549/public_html/simon-lou/public/../vendor/autoload.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/losi2549/public_html/simon-lou/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/losi2549/public_html/simon-lou/public/index.php on line 34

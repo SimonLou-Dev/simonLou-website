@@ -28,7 +28,7 @@ class AdminTicketsController extends Controller
     }
 
     public function show($id){
-        $ticket = project_echange::where('id', $id)->first;
+        $ticket = project_echange::where('id', $id)->first();
         $echange = echange_tickets::all()->where('echange_id', $ticket->id)->sortByDesc('id');
 
         return view('admin.tickets.reply',[
